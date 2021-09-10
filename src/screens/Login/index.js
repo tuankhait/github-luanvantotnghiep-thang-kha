@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   View,
@@ -8,33 +8,36 @@ import {
   SafeAreaView,
   Alert,
   Dimensions,
-  // AsyncStorage,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './styles';
 import * as Animatable from 'react-native-animatable';
 import LoadingIndicator from '../../components/Loading';
-import { CommonActions } from '@react-navigation/native';
-import { isEmail } from '../../shared/utils/convertData';
+import {CommonActions} from '@react-navigation/native';
+import {isEmail} from '../../shared/utils/convertData';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const { height, width } = Dimensions.get('window');
+import colors from '../../shared/themes/colors';
+import size from '../../shared/themes/size';
+const {height, width} = Dimensions.get('window');
 
-const Login = ({ navigation }) => {
+const Login = ({navigation}) => {
   const [data, setData] = React.useState({
-    username: '',
-    password: '',
+    username: 'khakha@gmail.com',
+    password: '1234567',
     check_textInputChange: false,
     secureTextEntry: true,
     isValidUser: true,
     isValidPassword: true,
   });
   const [isShowLoading, setIsShowLoading] = useState(false);
-  const resetAction = CommonActions.reset({
-    index: 0,
-    routes: [{ name: 'Home' }],
-  });
+  // const resetAction = CommonActions.reset({
+  //   index: 0,
+  //   routes: [{ name: 'Home' }],
+  // });
 
   const textInputChange = val => {
     if (val.trim().length >= 4) {
@@ -96,37 +99,43 @@ const Login = ({ navigation }) => {
 
   // hàm đăng nhập
   const loginHandle = async () => {
-    const { username, password } = data;
-    console.log('dăng nhập');
+    const {username, password} = data;
+    console.log('Login');
     if (data.username.length === 0 || data.password.length === 0) {
       Alert.alert(
         'Thông báo!',
-        'Mã sinh viên hoặc mật khẩu không được để trống.',
-        [{ text: 'Okay' }],
+        'Tên đăng nhập hoặc mật khẩu không được để trống.',
+        [{text: 'Đồng ý'}],
       );
       return;
     } else {
-      navigation.navigate("Home")
+      navigation.navigate('HomeScreenStudent');
       setIsShowLoading(true);
     }
   };
 
   return (
-    <SafeAreaView style={{ height: '100%', flex: 1 }}>
+    // <SafeAreaView >
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{height: '100%', flex: 1}}>
       <LoadingIndicator visible={isShowLoading} />
       <Image
         source={require('../../images/nameLogin.png')}
         style={styles.ViewImageLogin}
       />
-      <View style={{ width: width, marginTop: 10, flex: 1 }}>
-
-        <Text style={styles.TxtCodeSV}>MÃ SINH VIÊN</Text>
+      <View style={{width: width, marginTop: size.REAL_SIZE_10, flex: 1}}>
+        <Text style={styles.TxtCodeSV}>TÊN ĐĂNG NHẬP</Text>
         <View style={styles.ViewInput}>
-          <Icon name="mail" color='#007cc3' size={20} />
+          <Icon name="mail" color={colors.BLUE_MAIN} size={size.REAL_SIZE_20} />
           <TextInput
-            placeholder="Mã sinh viên..."
-            placeholderTextColor='#007cc3'
-            style={{ paddingHorizontal: 10, marginRight: 10, width: width / 1.5 }}
+            placeholder="Tên đăng nhập..."
+            placeholderTextColor={colors.BLUE_MAIN}
+            style={{
+              paddingHorizontal: size.REAL_SIZE_10,
+              marginRight: size.REAL_SIZE_10,
+              width: width / 1.5,
+            }}
             autoCapitalize="none"
             onChangeText={val => textInputChange(val)}
             onEndEditing={e => handleValidUser(e.nativeEvent.text)}
@@ -134,22 +143,38 @@ const Login = ({ navigation }) => {
           />
           {data.check_textInputChange ? (
             <Animatable.View animation="bounceIn">
-              <Feather name="check-circle" color="green" size={20} />
+              <Feather
+                name="check-circle"
+                color={colors.BLUE_MAIN}
+                size={size.REAL_SIZE_20}
+              />
             </Animatable.View>
           ) : null}
         </View>
         {data.isValidUser ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
-            <Text style={styles.errorMsg}>Vui lòng nhập mã sinh viên hợp lệ</Text>
+            <Text style={styles.errorMsg}>
+              Vui lòng nhập Tên đăng nhập hợp lệ
+            </Text>
           </Animatable.View>
         )}
-        <Text style={[styles.TxtCodeSV, { marginTop: 12 }]}>MẬT KHẨU</Text>
+        <Text style={[styles.TxtCodeSV, {marginTop: size.REAL_SIZE_12}]}>
+          MẬT KHẨU
+        </Text>
         <View style={[styles.ViewInput]}>
-          <Icon name="md-lock-closed" color='#007cc3' size={20} />
+          <Icon
+            name="md-lock-closed"
+            color={colors.BLUE_MAIN}
+            size={size.REAL_SIZE_20}
+          />
           <TextInput
-            placeholder="Password"
-            placeholderTextColor='#007cc3'
-            style={{ paddingHorizontal: 10, marginRight: 10, width: width - 140 }}
+            placeholder="Mật khẩu..."
+            placeholderTextColor={colors.BLUE_MAIN}
+            style={{
+              paddingHorizontal: size.REAL_SIZE_10,
+              marginRight: size.REAL_SIZE_10,
+              width: width - size.REM * 125,
+            }}
             secureTextEntry={data.secureTextEntry ? true : false}
             autoCapitalize="none"
             onChangeText={val => handlePasswordChange(val)}
@@ -157,17 +182,27 @@ const Login = ({ navigation }) => {
           />
           <TouchableOpacity
             onPress={updateSecureTextEntry}
-            style={{ justifyContent: 'flex-end' }}>
+            style={{justifyContent: 'flex-end'}}>
             {data.secureTextEntry ? (
-              <Feather name="eye-off" color='#007cc3' size={22} />
+              <Feather
+                name="eye-off"
+                color={colors.BLUE_MAIN}
+                size={size.REAL_SIZE_20}
+              />
             ) : (
-              <Feather name="eye" color='#007cc3' size={22} />
+              <Feather
+                name="eye"
+                color={colors.BLUE_MAIN}
+                size={size.REAL_SIZE_20}
+              />
             )}
           </TouchableOpacity>
         </View>
         {data.isValidPassword ? null : (
           <Animatable.View animation="fadeInLeft" duration={500}>
-            <Text style={styles.errorMsg}>Mật khẩu phải có ít nhất 6 ký tự.</Text>
+            <Text style={styles.errorMsg}>
+              Mật khẩu phải có ít nhất 6 ký tự.
+            </Text>
           </Animatable.View>
         )}
         <TouchableOpacity
@@ -178,7 +213,8 @@ const Login = ({ navigation }) => {
           <Text style={styles.TxtLogin}>Đăng nhập</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
+    // </SafeAreaView>
   );
 };
 export default Login;

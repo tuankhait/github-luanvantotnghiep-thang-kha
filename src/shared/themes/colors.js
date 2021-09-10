@@ -16,7 +16,9 @@ const GREEN = '#10B15A';
 const BLUE = 'blue';
 const LIGHT_PLACEHOLDER = '#B2B8B9';
 const Grey200 = '#B2B8B9';
-const BLUE_MAIN = '#18BCC7';
+const BLUE_MAIN = '#007cc3';
+const BLUE_1865c7 ="#1865c7";
+const BLUE_RGBA = 'rgba(0,124,195,0.3)';
 const Grey50 = '#f3f3f3';
 const Grey900 = '#0B0C0D';
 const Grey300 = '#8C9497';
@@ -46,5 +48,7 @@ export default {
   BLUE,
   LIGHT_PLACEHOLDER,
   BLUE_MAIN,
-  Grey200
+  Grey200,
+  BLUE_1865c7,
+  BLUE_RGBA
 };
