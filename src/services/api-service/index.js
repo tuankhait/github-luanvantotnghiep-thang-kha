@@ -1,5 +1,5 @@
 import axios from 'axios';
-import _ from 'npm i --save lodash';
+import _ from 'lodash';
 import {mapData, mapError} from './mapData';
 import { baseURL } from "./BaseURL";
 const CancelToken = axios.CancelToken;
@@ -7,7 +7,7 @@ const CancelToken = axios.CancelToken;
 const addParams = (url, params) => {
   url += `?`;
   _.keys(params).forEach(value => {
-    url += `${value}=${params[value]}&`;
+    url += `${value}=${params[value]}`;
   });
   console.log("url", url);
   return url;
@@ -56,7 +56,7 @@ export default class Request {
     const request = this.api
       .post(
         addParams(url, queryParams),
-        _.assign({}, queryParams, body),
+        _.assign({}, body),
         apiConfig,
       )
       .then(mapData)

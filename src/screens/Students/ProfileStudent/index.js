@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, FlatList, Text, SafeAreaView } from 'react-native';
+import { View, FlatList, Text, SafeAreaView , KeyboardAvoidingView, ScrollView, Image} from 'react-native';
 import styles from './styles';
 import Sizes from '../../../shared/themes/size';
 import COLORS from '../../../shared/themes/colors';
@@ -12,10 +12,22 @@ const ProfileStudent = ({ navigation, route }) => {
   
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Header backBtnEnable={true} textHeader="Thông tin sinh viên" />
-
-    </SafeAreaView>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}>
+      <Header backBtnEnable={true} textHeader="Thông tin cá nhân" />
+      <ScrollView style={styles.body} showsVerticalScrollIndicator={false}>
+        <View style={styles.viewContainerImage}>
+          <View
+            style={styles.viewImage}
+          />
+            <Image
+              source={require('../../../images/ImageAvatar.png')}
+            style={styles.imageAvatar}
+            />
+          </View>
+      </ScrollView>
+        </KeyboardAvoidingView>
   );
 };
 
