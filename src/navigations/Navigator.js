@@ -7,6 +7,7 @@ import FaildSubject from '../screens/Students/FaildSubject';
 import PassingSubject from '../screens/Students/PassingSubject';
 import ProfileStudent from '../screens/Students/ProfileStudent';
 import TuitionFee from '../screens/Students/TuitionFee';
+import ChatBoxScreen from '../screens/Students/ChatBot';
 
 const Stack = createStackNavigator();
 const screenOptionStyle = {
@@ -23,6 +24,7 @@ const HomeStackNavigator = () => {
       <Stack.Screen name="PassingSubject" component={PassingSubject} />
       <Stack.Screen name="ProfileStudent" component={ProfileStudent} />
       <Stack.Screen name="TuitionFee" component={TuitionFee} />
+      <Stack.Screen name="ChatBot" component={ChatBoxScreen} />
     </Stack.Navigator>
   );
 };

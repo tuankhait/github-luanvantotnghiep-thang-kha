@@ -10,7 +10,7 @@ import {
   Platform,
 } from 'react-native';
 import styles from './styles';
-import Sizes from '../../../shared/themes/size';
+import Sizes, { WIDTH } from '../../../shared/themes/size';
 import COLORS from '../../../shared/themes/colors';
 import LoadingIndicator from '../../../components/Loading';
 const HomeScreenStudent = ({navigation, route}) => {
@@ -103,6 +103,12 @@ const HomeScreenStudent = ({navigation, route}) => {
           numColumns={2}
           showsVerticalScrollIndicator={false}
         />
+        <TouchableOpacity onPress={()=>{navigation.navigate("ChatBot")}}
+        style={{ height: 80, width: 80, borderRadius: 40, bottom: 100, left: WIDTH-80 }}>
+          <Image source={{
+            uri: 'https://cdn.dribbble.com/users/281679/screenshots/14897126/media/f52c47307ac2daa0c727b1840c41d5ab.png',
+          }} style={{ height: 80, width: 80, borderRadius: 40 }} />
+        </TouchableOpacity>
       </ImageBackground>
     </View>
   );
