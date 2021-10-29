@@ -22,11 +22,12 @@ import {isEmail} from '../../shared/utils/convertData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import colors from '../../shared/themes/colors';
 import size from '../../shared/themes/size';
+import DataApi from '../../services/api-service/DataApi';
 const {height, width} = Dimensions.get('window');
 
 const Login = ({navigation}) => {
   const [data, setData] = React.useState({
-    username: 'khakha@gmail.com',
+    username: 'A18075',
     password: '1234567',
     check_textInputChange: false,
     secureTextEntry: true,
@@ -34,25 +35,25 @@ const Login = ({navigation}) => {
     isValidPassword: true,
   });
   const [isShowLoading, setIsShowLoading] = useState(false);
-  // const resetAction = CommonActions.reset({
-  //   index: 0,
-  //   routes: [{ name: 'Home' }],
-  // });
+  const resetAction = CommonActions.reset({
+    index: 0,
+    routes: [{name: 'HomeScreenStudent'}],
+  });
 
   const textInputChange = val => {
     if (val.trim().length >= 4) {
       setData({
         ...data,
         username: val,
-        check_textInputChange: isEmail(val),
-        isValidUser: isEmail(val),
+        check_textInputChange: true,
+        isValidUser: true,
       });
     } else {
       setData({
         ...data,
         username: val,
-        check_textInputChange: isEmail(val),
-        isValidUser: isEmail(val),
+        check_textInputChange: false,
+        isValidUser: false,
       });
     }
   };
@@ -87,7 +88,7 @@ const Login = ({navigation}) => {
     if (val.trim().length >= 4) {
       setData({
         ...data,
-        isValidUser: isEmail(val),
+        isValidUser: false,
       });
     } else {
       setData({
@@ -109,8 +110,41 @@ const Login = ({navigation}) => {
       );
       return;
     } else {
-      navigation.navigate('HomeScreenStudent');
       setIsShowLoading(true);
+      onHandlConnect(username, password);
+    }
+  };
+
+  //hàm login (connect to server)
+  const onHandlConnect = async (username, password) => {
+    const resCheckUser = await DataApi.postDataMaster(
+      {
+        username: username,
+      },
+      {function: 'checkUsername'},
+    );
+    const dataCheck = 'User da ton tai';
+    if (
+      resCheckUser?.data == dataCheck &&
+      resCheckUser &&
+      resCheckUser?.msg == 'OK'
+    ) {
+      setIsShowLoading(false);
+      const resLogin = await DataApi.postDataMaster(
+        {
+          username: username,
+          password: password,
+        },
+        {function: 'getInfoUserByUsernameAndPassword'},
+      );
+      if (resLogin?.data !== 'error') {
+        navigation.dispatch(resetAction);
+      } else {
+        Alert.alert('Đăng nhập không thành công');
+      }
+    } else {
+      setIsShowLoading(false);
+      Alert.alert('Tài khoản không tồn tại');
     }
   };
 
