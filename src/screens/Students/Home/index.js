@@ -10,37 +10,45 @@ import {
   Platform,
 } from 'react-native';
 import styles from './styles';
-import Sizes, { WIDTH } from '../../../shared/themes/size';
+import Sizes, {WIDTH} from '../../../shared/themes/size';
 import COLORS from '../../../shared/themes/colors';
 import LoadingIndicator from '../../../components/Loading';
+import {useDispatch, useSelector} from 'react-redux';
 const HomeScreenStudent = ({navigation, route}) => {
   const [isShowLoading, setIsShowLoading] = useState(false);
+  const authReducer = useSelector(state => state.authReducer);
   const ListScreen = [
     {
       id: 2,
       name: 'Môn đậu',
-      onPress: () => { navigation.navigate("PassingSubject")},
+      onPress: () => {
+        navigation.navigate('PassingSubject');
+      },
       icon: require('../../../images/ImagePass.png'),
       count: Sizes.REAL_SIZE_72,
     },
     {
       id: 3,
       name: 'Môn chưa đậu',
-      onPress: () => { navigation.navigate("FaildSubject") },
+      onPress: () => {
+        navigation.navigate('FaildSubject');
+      },
       icon: require('../../../images/ImageFaild.png'),
       count: Sizes.REAL_SIZE_80,
     },
-    {
-      id: 4,
-      name: 'Học phí',
-      onPress: () => { navigation.navigate("TuitionFee") },
-      icon: require('../../../images/ImagePriceStudent.png'),
-      count: Sizes.REAL_SIZE_80,
-    },
+    // {
+    //   id: 4,
+    //   name: 'Học phí',
+    //   onPress: () => { navigation.navigate("TuitionFee") },
+    //   icon: require('../../../images/ImagePriceStudent.png'),
+    //   count: Sizes.REAL_SIZE_80,
+    // },
     {
       id: 1,
       name: 'Thông tin sinh viên',
-      onPress: () => { navigation.navigate("ProfileStudent") },
+      onPress: () => {
+        navigation.navigate('ProfileStudent');
+      },
       icon: require('../../../images/ImageProfile.png'),
       count: Sizes.REAL_SIZE_96,
     },
@@ -92,7 +100,11 @@ const HomeScreenStudent = ({navigation, route}) => {
           />
           <View style={styles.ViewTxtTitle}>
             <Text style={styles.TxtHello}>Xin chào!</Text>
-            <Text style={styles.TxtNameUser}>Bạn</Text>
+            <Text style={styles.TxtNameUser}>
+              {authReducer?.userInfo?.SV_HOTEN
+                ? authReducer?.userInfo?.SV_HOTEN
+                : 'Sinh Viên'}
+            </Text>
           </View>
         </View>
         <FlatList
@@ -103,11 +115,23 @@ const HomeScreenStudent = ({navigation, route}) => {
           numColumns={2}
           showsVerticalScrollIndicator={false}
         />
-        <TouchableOpacity onPress={()=>{navigation.navigate("ChatBot")}}
-        style={{ height: 80, width: 80, borderRadius: 40, bottom: 100, left: WIDTH-80 }}>
-          <Image source={{
-            uri: 'https://cdn.dribbble.com/users/281679/screenshots/14897126/media/f52c47307ac2daa0c727b1840c41d5ab.png',
-          }} style={{ height: 80, width: 80, borderRadius: 40 }} />
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('ChatBot');
+          }}
+          style={{
+            height: 80,
+            width: 80,
+            borderRadius: 40,
+            bottom: 100,
+            left: WIDTH - 80,
+          }}>
+          <Image
+            source={{
+              uri: 'https://cdn.dribbble.com/users/281679/screenshots/14897126/media/f52c47307ac2daa0c727b1840c41d5ab.png',
+            }}
+            style={{height: 80, width: 80, borderRadius: 40}}
+          />
         </TouchableOpacity>
       </ImageBackground>
     </View>

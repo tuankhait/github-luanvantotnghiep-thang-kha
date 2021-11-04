@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   View,
@@ -16,16 +16,19 @@ import Feather from 'react-native-vector-icons/Feather';
 import styles from './styles';
 import * as Animatable from 'react-native-animatable';
 import LoadingIndicator from '../../components/Loading';
-import {CommonActions} from '@react-navigation/native';
-import {isEmail} from '../../shared/utils/convertData';
+import { CommonActions } from '@react-navigation/native';
+import { isEmail } from '../../shared/utils/convertData';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import colors from '../../shared/themes/colors';
 import size from '../../shared/themes/size';
 import DataApi from '../../services/api-service/DataApi';
-const {height, width} = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
+import { useDispatch, useSelector } from 'react-redux';
+import authActions from '../../core/redux/actions/authActions';
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
+  const dispatch = useDispatch()
   const [data, setData] = React.useState({
     username: 'A18075',
     password: '1234567',
@@ -37,7 +40,7 @@ const Login = ({navigation}) => {
   const [isShowLoading, setIsShowLoading] = useState(false);
   const resetAction = CommonActions.reset({
     index: 0,
-    routes: [{name: 'HomeScreenStudent'}],
+    routes: [{ name: 'HomeScreenStudent' }],
   });
 
   const textInputChange = val => {
@@ -100,13 +103,13 @@ const Login = ({navigation}) => {
 
   // hàm đăng nhập
   const loginHandle = async () => {
-    const {username, password} = data;
+    const { username, password } = data;
     console.log('Login');
     if (data.username.length === 0 || data.password.length === 0) {
       Alert.alert(
         'Thông báo!',
         'Tên đăng nhập hoặc mật khẩu không được để trống.',
-        [{text: 'Đồng ý'}],
+        [{ text: 'Đồng ý' }],
       );
       return;
     } else {
@@ -121,7 +124,7 @@ const Login = ({navigation}) => {
       {
         username: username,
       },
-      {function: 'checkUsername'},
+      { function: 'checkUsername' },
     );
     const dataCheck = 'User da ton tai';
     if (
@@ -135,9 +138,23 @@ const Login = ({navigation}) => {
           username: username,
           password: password,
         },
-        {function: 'getInfoUserByUsernameAndPassword'},
+        { function: 'getInfoUserByUsernameAndPassword' },
       );
       if (resLogin?.data !== 'error') {
+        const resUserInfo = await DataApi.postDataMaster(
+          {
+            mssv: username,
+          },
+          { function: 'getInfoSinhVienByMSSV' },
+        );
+        console.log(resUserInfo);
+        if (resUserInfo?.msg == "OK" && resUserInfo?.data) {
+          dispatch(authActions.loginSuccess({
+            username: username,
+            password: password,
+            userInfo: resUserInfo?.data ? resUserInfo?.data[0] : {}
+          }))
+        }
         navigation.dispatch(resetAction);
       } else {
         Alert.alert('Đăng nhập không thành công');
@@ -152,13 +169,13 @@ const Login = ({navigation}) => {
     // <SafeAreaView >
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={{height: '100%', flex: 1}}>
+      style={{ height: '100%', flex: 1 }}>
       <LoadingIndicator visible={isShowLoading} />
       <Image
         source={require('../../images/nameLogin.png')}
         style={styles.ViewImageLogin}
       />
-      <View style={{width: width, marginTop: size.REAL_SIZE_10, flex: 1}}>
+      <View style={{ width: width, marginTop: size.REAL_SIZE_10, flex: 1 }}>
         <Text style={styles.TxtCodeSV}>TÊN ĐĂNG NHẬP</Text>
         <View style={styles.ViewInput}>
           <Icon name="mail" color={colors.BLUE_MAIN} size={size.REAL_SIZE_20} />
@@ -192,7 +209,7 @@ const Login = ({navigation}) => {
             </Text>
           </Animatable.View>
         )}
-        <Text style={[styles.TxtCodeSV, {marginTop: size.REAL_SIZE_12}]}>
+        <Text style={[styles.TxtCodeSV, { marginTop: size.REAL_SIZE_12 }]}>
           MẬT KHẨU
         </Text>
         <View style={[styles.ViewInput]}>
@@ -216,7 +233,7 @@ const Login = ({navigation}) => {
           />
           <TouchableOpacity
             onPress={updateSecureTextEntry}
-            style={{justifyContent: 'flex-end'}}>
+            style={{ justifyContent: 'flex-end' }}>
             {data.secureTextEntry ? (
               <Feather
                 name="eye-off"

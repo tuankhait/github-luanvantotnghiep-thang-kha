@@ -8,6 +8,8 @@ import PassingSubject from '../screens/Students/PassingSubject';
 import ProfileStudent from '../screens/Students/ProfileStudent';
 import TuitionFee from '../screens/Students/TuitionFee';
 import ChatBoxScreen from '../screens/Students/ChatBot';
+import { NavigationContainer } from '@react-navigation/native';
+import navigationService from '../services/navigation-service/';
 
 const Stack = createStackNavigator();
 const screenOptionStyle = {
@@ -16,6 +18,10 @@ const screenOptionStyle = {
 
 const HomeStackNavigator = () => {
   return (
+    <NavigationContainer
+      ref={navigatorRef => {
+        navigationService.setTopLevelNavigator(navigatorRef);
+      }}>
     <Stack.Navigator screenOptions={screenOptionStyle}>
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
       <Stack.Screen name="Login" component={Login} />
@@ -26,6 +32,7 @@ const HomeStackNavigator = () => {
       <Stack.Screen name="TuitionFee" component={TuitionFee} />
       <Stack.Screen name="ChatBot" component={ChatBoxScreen} />
     </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

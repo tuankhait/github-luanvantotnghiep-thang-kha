@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, FlatList, Text, SafeAreaView } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, FlatList, Text, SafeAreaView} from 'react-native';
 import styles from './styles';
 import Sizes from '../../../shared/themes/size';
 import COLORS from '../../../shared/themes/colors';
@@ -7,59 +7,61 @@ import LoadingIndicator from '../../../components/Loading';
 import Header from '../../../components/Header';
 import DataApi from '../../../services/api-service/DataApi';
 import moment from 'moment';
-const FaildSubject = ({ navigation, route }) => {
+import {useDispatch, useSelector} from 'react-redux';
+const FaildSubject = ({navigation, route}) => {
   const [isShowLoading, setIsShowLoading] = useState(false);
+  const authReducer = useSelector(state => state.authReducer);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     async function postData() {
       setIsShowLoading(true);
       let arraySubjectPass = [];
-      const resSubject = await DataApi.postDataMaster(
-        {
-          mssv: 'B16045',
-        },
-        { function: 'getMonHocCuaSinhVienByMSSV' },
-      );
-      if (resSubject?.msg == 'OK') {
-        resSubject?.data?.map(async (item, index) => {
-          const res = await DataApi.postDataMaster(
-            {
-              mssv: 'B16045',
-              idMon: item?.MH_ID,
-              checkbox: '0',
-            },
-            { function: 'getDataTotNghiepCuaSinhVienTheoMon' },
-          );
-          if (res?.msg == 'OK') {
-            var array = arraySubjectPass.concat(res?.data);
-            arraySubjectPass = array;
-            if (index == resSubject?.data.length - 1) {
-              setData(arraySubjectPass);
+      if (authReducer?.userInfo?.SV_MSSV) {
+        const resSubject = await DataApi.postDataMaster(
+          {
+            mssv: authReducer?.userInfo?.SV_MSSV,
+          },
+          {function: 'getMonHocCuaSinhVienByMSSV'},
+        );
+        if (resSubject?.msg == 'OK') {
+          resSubject?.data?.map(async (item, index) => {
+            const res = await DataApi.postDataMaster(
+              {
+                mssv: authReducer?.userInfo?.SV_MSSV,
+                idMon: item?.MH_ID,
+                checkbox: '0',
+              },
+              {function: 'getDataTotNghiepCuaSinhVienTheoMon'},
+            );
+            if (res?.msg == 'OK') {
+              var array = arraySubjectPass.concat(res?.data);
+              arraySubjectPass = array;
+              if (index == resSubject?.data.length - 1) {
+                setData(arraySubjectPass);
+              }
             }
-          }
-        });
-      }
+          });
+        }
+      } else Alert.alert('Không có dữ liệu sinh viên');
       setIsShowLoading(false);
     }
     postData();
   }, []);
   //render Item home
-  function renderItems({ item, index }) {
-    console.log("item", item)
+  function renderItems({item, index}) {
+    console.log('item', item);
     return (
       <View key={item.id} style={[styles.btnFunction]}>
         <View style={styles.ViewDes}>
           <Text style={styles.txtNameListFunction}>{'Tên môn:'}</Text>
-          <Text style={styles.txtDesListFunction}>
-            {
-              item?.MH_TEN
-            }
-          </Text>
+          <Text style={styles.txtDesListFunction}>{item?.MH_TEN}</Text>
         </View>
         <View style={styles.ViewDes}>
           <Text style={styles.txtNameListFunction}>{'Điểm thi:'}</Text>
-          <Text style={styles.txtDesListFunction}>{Number(item?.THI_DIEM) > 0 ? item?.THI_DIEM : 0}</Text>
+          <Text style={styles.txtDesListFunction}>
+            {Number(item?.THI_DIEM) > 0 ? item?.THI_DIEM : 0}
+          </Text>
         </View>
         <View style={styles.ViewDes}>
           <Text style={styles.txtNameListFunction}>{'Kết quả:'}</Text>
@@ -75,7 +77,9 @@ const FaildSubject = ({ navigation, route }) => {
         </View>
         <View style={styles.ViewDes}>
           <Text style={styles.txtNameListFunction}>{'Ngày thi:'}</Text>
-          <Text style={styles.txtDesListFunction}>{moment(item?.KT_NGAY?.date).format("DD/MM/YYYY")}</Text>
+          <Text style={styles.txtDesListFunction}>
+            {moment(item?.KT_NGAY?.date).format('DD/MM/YYYY')}
+          </Text>
         </View>
       </View>
     );
@@ -91,7 +95,7 @@ const FaildSubject = ({ navigation, route }) => {
           data={data}
           renderItem={renderItems}
           keyExtractor={index => index.toString()}
-          showsVerticalScrollIndicator={false}
+          // showsVerticalScrollIndicator={false}
         />
       ) : (
         <Text
@@ -108,6 +112,5 @@ const FaildSubject = ({ navigation, route }) => {
     </SafeAreaView>
   );
 };
-
 
 export default FaildSubject;
