@@ -8,8 +8,10 @@ import PassingSubject from '../screens/Students/PassingSubject';
 import ProfileStudent from '../screens/Students/ProfileStudent';
 import TuitionFee from '../screens/Students/TuitionFee';
 import ChatBoxScreen from '../screens/Students/ChatBot';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import navigationService from '../services/navigation-service/';
+import ChangePassword from '../screens/Students/ProfileStudent/ChangePassword';
+import ChangeUserInfo from '../screens/Students/ProfileStudent/ChangeUserInfo';
 
 const Stack = createStackNavigator();
 const screenOptionStyle = {
@@ -22,16 +24,18 @@ const HomeStackNavigator = () => {
       ref={navigatorRef => {
         navigationService.setTopLevelNavigator(navigatorRef);
       }}>
-    <Stack.Navigator screenOptions={screenOptionStyle}>
-      <Stack.Screen name="SplashScreen" component={SplashScreen} />
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="HomeScreenStudent" component={HomeScreenStudent} />
-      <Stack.Screen name="FaildSubject" component={FaildSubject} />
-      <Stack.Screen name="PassingSubject" component={PassingSubject} />
-      <Stack.Screen name="ProfileStudent" component={ProfileStudent} />
-      <Stack.Screen name="TuitionFee" component={TuitionFee} />
-      <Stack.Screen name="ChatBot" component={ChatBoxScreen} />
-    </Stack.Navigator>
+      <Stack.Navigator screenOptions={screenOptionStyle}>
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="HomeScreenStudent" component={HomeScreenStudent} />
+        <Stack.Screen name="FaildSubject" component={FaildSubject} />
+        <Stack.Screen name="PassingSubject" component={PassingSubject} />
+        <Stack.Screen name="ProfileStudent" component={ProfileStudent} />
+        <Stack.Screen name="TuitionFee" component={TuitionFee} />
+        <Stack.Screen name="ChatBot" component={ChatBoxScreen} />
+        <Stack.Screen name="ChangePassword" component={ChangePassword} />
+        <Stack.Screen name="ChangeUserInfo" component={ChangeUserInfo} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

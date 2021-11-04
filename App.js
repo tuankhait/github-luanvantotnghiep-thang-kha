@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import { View } from 'react-native';
-// import {getBottomSpace} from 'react-native-iphone-x-helper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ActivityIndicator } from 'react-native';
 import { Provider } from 'react-redux';
@@ -22,4 +21,4 @@ class App extends Component {
     );
   }
 }
-export default App
+export default App;

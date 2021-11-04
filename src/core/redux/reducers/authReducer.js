@@ -2,10 +2,10 @@ import produce from 'immer';
 import {authActionTypes} from '../constants/index';
 
 const initialState = {
-userInfo: null,
-userName:"",
-password:"",
-
+  userInfo: null,
+  username: '',
+  password: '',
+  dataLogin: null,
 };
 
 export const authReducer = (state = initialState, action) =>
@@ -14,14 +14,18 @@ export const authReducer = (state = initialState, action) =>
 
     switch (type) {
       case authActionTypes.LOGIN_SUCCESS:
-        draft.userName = payload?.username;
-        draft.passWord = payload?.password;
-       draft.userInfo =payload?.userInfo;
+        draft.username = payload?.username;
+        draft.password = payload?.password;
+        draft.userInfo = payload?.userInfo;
+        draft.dataLogin = payload?.dataLogin;
         break;
       case authActionTypes.LOGOUT:
-        draft.userInfo=null;
-          draft.userName= "";
-            draft.password= "";
+        draft.userInfo = null;
+        draft.username = '';
+        draft.password = '';
+        break;
+      case authActionTypes.CHANGE_PASS:
+        draft.password = payload;
         break;
       default:
         break;

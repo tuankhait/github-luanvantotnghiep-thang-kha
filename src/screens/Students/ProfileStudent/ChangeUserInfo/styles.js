@@ -1,6 +1,6 @@
-import {Platform, StyleSheet} from 'react-native';
-import colors from '../../../shared/themes/colors';
-import size, {WIDTH} from '../../../shared/themes/size';
+import { Platform, StyleSheet } from 'react-native';
+import colors from '../../../../shared/themes/colors';
+import size, { WIDTH } from '../../../../shared/themes/size';
 // import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 
 // const Xphone =
@@ -9,35 +9,39 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
-  viewContainerImage: {
+  viewContainerInstruct: {
     marginTop: size.REAL_SIZE_20,
-    height: size.REM * 150,
+    // height: size.REM * 150,
     width: size.WIDTH,
+    paddingHorizontal: size.REAL_SIZE_14,
+  },
+  txtInstruct: {
+    fontSize: 18,
+    lineHeight: 24,
+    fontWeight: '500',
+  },
+  TxtCodeSV: {
+    fontSize: size.REAL_SIZE_14,
+    color: colors.BLUE_MAIN,
+    marginHorizontal: size.REAL_SIZE_14,
+    fontWeight: 'bold',
+    marginTop: size.REAL_SIZE_40,
+    marginBottom: size.REAL_SIZE_6,
+  },
+  ViewInput: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: size.REAL_SIZE_14,
+    borderWidth: 0.25,
+    paddingHorizontal: size.REAL_SIZE_10,
+    borderColor: '#007cc3',
+    borderRadius: size.REAL_SIZE_8,
+    paddingVertical: 2,
+    backgroundColor: '#FFF',
   },
 
-  viewImage: {
-    marginTop: size.REAL_SIZE_96 / 2,
-    // width: size.WIDTH,
-    height: 0.5,
-    backgroundColor: colors.LIGHT_PLACEHOLDER,
-    marginHorizontal: size.REAL_SIZE_14,
-  },
-  imageAvatar: {
-    height: size.REAL_SIZE_96,
-    width: size.REAL_SIZE_96,
-    borderRadius: size.REAL_SIZE_96,
-    position: 'absolute',
-    left: (size.WIDTH - size.REAL_SIZE_96) / 2,
-    top: 0,
-    backgroundColor: colors.WHITE,
-  },
-  txtNameUser: {
-    alignSelf: 'center',
-    color: colors.TEXT_COLOR,
-    fontSize: 20,
-    fontWeight: '900',
-    marginTop: -55,
-  },
+
+
   changeUserInfo: {
     height: size.REAL_SIZE_50,
     backgroundColor: colors.WHITE,

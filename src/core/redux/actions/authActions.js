@@ -10,6 +10,9 @@ class AuthActions {
   logout() {
     return {type: authActionTypes.LOGOUT};
   }
+  changePass(data) {
+    return { type: authActionTypes.CHANGE_PASS, payload: data };
+  }
 }
 
 export default new AuthActions();

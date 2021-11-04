@@ -18,7 +18,6 @@ import * as Animatable from 'react-native-animatable';
 import LoadingIndicator from '../../components/Loading';
 import { CommonActions } from '@react-navigation/native';
 import { isEmail } from '../../shared/utils/convertData';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import colors from '../../shared/themes/colors';
 import size from '../../shared/themes/size';
@@ -141,6 +140,10 @@ const Login = ({ navigation }) => {
         { function: 'getInfoUserByUsernameAndPassword' },
       );
       if (resLogin?.data !== 'error') {
+        console.log(resLogin.toString())
+        const data = resLogin.toString();
+        const index = data.indexOf("}");
+        const dataUser = JSON.parse( data.slice(index+1, data.length))
         const resUserInfo = await DataApi.postDataMaster(
           {
             mssv: username,
@@ -152,7 +155,8 @@ const Login = ({ navigation }) => {
           dispatch(authActions.loginSuccess({
             username: username,
             password: password,
-            userInfo: resUserInfo?.data ? resUserInfo?.data[0] : {}
+            userInfo: resUserInfo?.data ? resUserInfo?.data[0] : {},
+            dataLogin: dataUser?.data ,
           }))
         }
         navigation.dispatch(resetAction);
