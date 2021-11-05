@@ -1,4 +1,4 @@
-version: "2.0"
+version: '2.0'
 
 intents:
   - greet
@@ -8,26 +8,60 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - xemdiemdau
+  - xemdiemchuadau
+  - btn
+  - rep_MSV
+
+entities:
+  - MSV
+
+slots:
+  MSV:
+    type: text
 
 responses:
+  utter_btn:
+    - text: 'tôi có thể giúp gì cho bạn?'
+      buttons:
+        - title: 'xem môn đậu'
+          payload: 'xem môn đậu'
+        - title: 'xem môn chưa đậu'
+          payload: 'xem môn chưa đậu'
+
+  utter_ask_btn:
+    - text: 'bạn còn muốn biết thêm gì không?'
+      buttons:
+        - title: 'xem môn đậu'
+          payload: 'xem môn đậu'
+        - title: 'xem môn chưa đậu'
+          payload: 'xem môn chưa đậu'
+
+  utter_ask_MSV:
+    - text: 'Mã sinh viên của bạn là gì?'
+
   utter_greet:
-  - text: "Hey! How are you?"
+    - text: 'Hey! How are you?'
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: 'Here is something to cheer you up:'
+      image: 'https://i.imgur.com/nGF1K8f.jpg'
 
   utter_did_that_help:
-  - text: "Did that help you?"
+    - text: 'Did that help you?'
 
   utter_happy:
-  - text: "Great, carry on!"
+    - text: 'Great, carry on!'
 
   utter_goodbye:
-  - text: "Bye"
+    - text: 'Bye'
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: 'I am a bot, powered by Rasa.'
+
+actions:
+  - kqdau
+  - kqrot
 
 session_config:
   session_expiration_time: 60
