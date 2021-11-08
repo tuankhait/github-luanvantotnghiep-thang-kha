@@ -9,29 +9,34 @@
 import React from 'react';
 import { SafeAreaView, StatusBar, View, Text} from 'react-native';
 import Header from '../../../components/Header';
+import colors from '../../../shared/themes/colors';
 import RNRasa from './RNRasa';
 
 
 // your host
-const IpLaptop ="192.168.1.12";
+const IpLaptop ="192.168.1.46";
 const HOST = `http://${IpLaptop}:5005`;
 
 //TODO: reset bot on destroy
 //TODO: handle when bot response error
 
-const ChatBoxScreen = () => {
+const ChatBoxScreen = ({navigation}) => {
     return (
         // <>
-            <SafeAreaView style={{ flex: 1 }}>
-                <Header backBtnEnable={true} textHeader="Chat bot" />
+        <SafeAreaView style={{ flex: 1, backgroundColor: "rgba(0,124,195,0.1)" }}>
+            <Header backBtnEnable={true} textHeader="Chat Bot" handleNavigationGoBack={() => navigation.navigate("ProfileStudent")}/>
+            <View style={{flex:1}}>
                 <RNRasa
+
                     // emptyResponseMessage="Sorry, I dont understand"
                     host={HOST}
                     onSendMessFailed={(error) => console.log(error)}
                     placeholder="Nhập tin nhắn"
-                alwaysShowSend={true}
+                    alwaysShowSend={true}
                 // renderSend={()=>{return(<View style={{alignSelf:'center', marginHorizontal: 12}}><Text>Gửi</Text></View>)}}
                 />
+            </View>
+              
             </SafeAreaView>
         // </>
     );
