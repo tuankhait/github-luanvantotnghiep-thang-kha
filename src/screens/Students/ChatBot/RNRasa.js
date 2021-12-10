@@ -12,7 +12,7 @@ import {
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import COLORS from '../../../shared/themes/colors';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
-
+import { useDispatch, useSelector } from 'react-redux';
 //TODO: reset bot on destroy
 
 const RNRasa = ({
@@ -24,8 +24,10 @@ const RNRasa = ({
   botAvatar,
   ...giftedChatProp
 }) => {
+  const authReducer = useSelector(state => state.authReducer);
   const [messages, setMessages] = useState([]);
   useEffect(() => {
+    postMSV()
     setMessages([
       {
         _id: 1,
@@ -40,6 +42,15 @@ const RNRasa = ({
       },
     ]);
   }, []);
+  const postMSV =async()=>{
+    const response = await fetch(`${host}/webhooks/rest/webhook`, {
+      ...fetchOptions,
+      body: JSON.stringify({
+        message: `${authReducer?.userInfo?.SV_MSSV}`,
+        sender: 'user',
+      }),
+    });
+  }
   // Parse the array message
   const parseMessages = useCallback(
     messArr => {
@@ -65,14 +76,13 @@ const RNRasa = ({
           ...fetchOptions,
           body: JSON.stringify(rasaMessageObj),
         });
-        console.log(response);
         let messagesJson = await response.json();
         const messageFail = [{recipient_id: 'user', text: 'Tôi không hiểu?'}];
         if (messagesJson.length == 0) {
           messagesJson = messageFail;
         }
         const newRecivieMess = parseMessages(messagesJson);
-        console.log(newRecivieMess);
+        console.log("newRecivieMess", newRecivieMess);
         if (!newRecivieMess.length) {
           onEmptyResponse && onEmptyResponse();
           if (emptyResponseMessage) {

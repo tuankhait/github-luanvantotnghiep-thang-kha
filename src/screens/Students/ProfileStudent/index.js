@@ -36,7 +36,6 @@ const ProfileStudent = ({navigation, route}) => {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
-      <Header backBtnEnable={true} textHeader="Thông tin cá nhân" />
       <ScrollView style={styles.body} showsVerticalScrollIndicator={false}>
         <View style={styles.viewContainerImage}>
           <View style={styles.viewImage} />

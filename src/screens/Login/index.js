@@ -140,7 +140,6 @@ const Login = ({ navigation }) => {
         { function: 'getInfoUserByUsernameAndPassword' },
       );
       if (resLogin?.data !== 'error') {
-        console.log(resLogin.toString())
         const data = resLogin.toString();
         const index = data.indexOf("}");
         const dataUser = JSON.parse( data.slice(index+1, data.length))
@@ -150,7 +149,7 @@ const Login = ({ navigation }) => {
           },
           { function: 'getInfoSinhVienByMSSV' },
         );
-        console.log(resUserInfo);
+        console.log("resUserInfo",resUserInfo);
         if (resUserInfo?.msg == "OK" && resUserInfo?.data) {
           dispatch(authActions.loginSuccess({
             username: username,

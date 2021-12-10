@@ -66,7 +66,6 @@ export default class Request {
   }
 
   put(url, body, config = {}, queryParams = {}) {
-    console.log("queryParams", queryParams);
     let cancel;
     const apiConfig = {
       params: {

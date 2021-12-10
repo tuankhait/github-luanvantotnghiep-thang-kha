@@ -13,6 +13,32 @@ nlu:
       - cho tao hỏi
       - biết điểm
       - biet diem
+      - bạn có thể làm được những gì
+      - bạn giúp được gì nào
+      - chức năng của bạn là gì
+      - bạn có thể làm được mấy chức năng
+      - việc gì bạn làm được
+      - kể xem bạn làm được gì
+      - cho mình biết bạn làm được gì nhé
+      - kể cho mình biết những việc bạn có thể làm được nhé
+      - nói cho mình về những việc bạn giúp được mình
+      - bạn giúp được mình gì nào
+      - bạn có thể làm gì
+      - em giúp được gì
+      - em làm được gì
+      - mày biết làm gì
+      - em biết làm gì
+      - bạn biết làm gì
+      - biết làm gì
+      - làm được gì 
+      - có làm được gì 
+      - có làm được trò gì 
+      - giúp giúp cái gì
+      - biết gì mà nói
+      - làm được gì
+      - giúp được gì
+      - mày làm được gì
+      - có biết gì
 
   - intent: rep_MSV
     examples: |
@@ -26,25 +52,161 @@ nlu:
   - intent: xemdiemdau
     examples: |
       - xem môn đậu
+      - xem mon dau
+      - sem mon dau
       - mon dau
+      - môn đậu
+      - mon dau
+      - môn đậu
       - diem dau 
-      - xem điểm đậu
-      - cho tao xem điểm đậu
-      - cho mình xem điểm đậu
       - điểm đậu
+      - đỉm đậu
+      - dim dau
+      - xem điểm đậu
+      - xem diem dau
+      - sem dim dau
+      - sem diem dau
+      - xem đỉm đậu
+      - sem điểm đậu
+      - xem diem dau
+      - xem điểm đậu
+      - sem dim dau
+      - xem đỉm đậu
+      - điểm đậu
+      - cho t xem điểm đậu
+      - cho tôi xem điểm đậu
+      - cho tớ xem điểm đậu
+      - cho tao xem điểm đậu
+      - cho toi xem diem dau
+      - cho to xem diem dau
+      - cho tao xem diem dau
+      - cho mị xem điểm đậu
+      - cho mi xem diem dau
+      - cho tôi xem điểm đậu
+      - cho tôi xem đỉm đậu
+      - cho tớ xem điểm đậu
+      - cho tao xem điểm đậu
+      - cho tớ xem đỉm đậu
+      - các môn đậu của tôi
+      - cac mon dau cua toi
+      - các môn đậu của tao
+      - các môn đậu của tớ
+      - cac mon dau cua tao
+      - cac mon dau cua to
+      - cac mon dau cua t
+      - môn nào đậu vậy?
+      - mon nao dau vay
+      - mon nao dau z
+      - mon nao dau zay
+      - môn nào đậu zậy
+      - môn nào đậu dạ
+      - mon nao dau da
+      - mon nao dau day
+      - tôi đã đậu môn nào?
+      - toi da dau mon nao?
+      - tao đã đậu môn nào?
+      - tớ đã đậu môn nào?
+      - to da dau mon nao?
+      - t đã đậu môn nào?
+      - t da dau mon nao?
+      - làm ơn cho tôi xem điểm đậu
+      - lam on cho toi xem diem dau
+      - làm ơn cho tớ xem điểm đậu
+      - lam on cho to xem diem dau
+      - làm ơn cho tao xem điểm đậu
+      - lam on cho tao xem diem dau
+      - làm ơn cho mình xem điểm đậu
+      - lam on cho minh xem diem dau
+      - làm ơn cho t xem điểm đậu
+      - lam on cho t xem diem dau
+      - còn điểm đậu của tôi thế nào?
+      - con diem dau cua toi the nao?
+      - còn điểm đậu của tớ thế nào?
+      - con diem dau cua to the nao?
+      - còn điểm đậu của tao thế nào?
+      - con diem dau cua tao the nao?
+      
 
   - intent: xemdiemchuadau
     examples: |
       - xem môn chưa đậu
+      - xem mon chua dau
+      - sem mon chua dau
       - mon chua dau
+      - môn chưa đậu
       - mon rot
+      - môn rớt
       - diem chua dau 
-      - xem điểm chưa đậu
       - điểm chưa đậu
+      - đỉm chưa đậu
+      - dim chua dau
+      - xem điểm chưa đậu
+      - xem diem chua dau
+      - sem dim chua dau
+      - sem diem chua dau
+      - xem đỉm chưa đậu
+      - sem điểm chưa đậu
       - xem diem rot
+      - xem điểm rớt
+      - sem dim rot
+      - xem đỉm rớt
       - điểm rớt
       - điểm trượt
+      - cho t xem điểm trượt
+      - cho tôi xem điểm trượt
+      - cho tớ xem điểm trượt
       - cho tao xem điểm trượt
+      - cho toi xem diem truot
+      - cho to xem diem truot
+      - cho tao xem diem truot
+      - cho mị xem điểm trượt
+      - cho mi xem diem truot
+      - cho tôi xem điểm chược
+      - cho tôi xem đỉm trượt
+      - cho tớ xem điểm chược
+      - cho tao xem điểm chược
+      - cho tớ xem đỉm chược
+      - các môn rớt của tôi
+      - cac mon rot cua toi
+      - các môn rớt của tao
+      - các môn rớt của tớ
+      - cac mon rot cua tao
+      - cac mon rot cua to
+      - cac mon rot cua t
+      - môn nào rớt vậy?
+      - mon nao rot vay
+      - mon nao rot z
+      - mon nao rot zay
+      - môn nào rớt zậy
+      - môn nào rớt dạ
+      - mon nao rot da
+      - mon nao rot day
+      - tôi đã rớt môn nào?
+      - toi da rot mon nao?
+      - tao đã rớt môn nào?
+      - tớ đã rớt môn nào?
+      - to da rot mon nao?
+      - t đã rớt môn nào?
+      - t da rot mon nao?
+      - làm ơn cho tôi xem điểm rớt
+      - lam on cho toi xem diem rot
+      - làm ơn cho tớ xem điểm rớt
+      - lam on cho to xem diem rot
+      - làm ơn cho tao xem điểm rớt
+      - lam on cho tao xem diem rot
+      - làm ơn cho mình xem điểm rớt
+      - lam on cho minh xem diem rot
+      - làm ơn cho t xem điểm rớt
+      - lam on cho t xem diem rot
+      - còn điểm rớt của tôi thế nào?
+      - con diem rot cua toi the nao?
+      - còn điểm rớt của tớ thế nào?
+      - con diem rot cua to the nao?
+      - còn điểm rớt của tao thế nào?
+      - con diem rot cua tao the nao?
+      
+
+
 
   - intent: greet
     examples: |
@@ -62,11 +224,19 @@ nlu:
       - goodevening
       - good afternoon
       - chào
+      - có ai giúp mình không
+      - bạn ơi
+      - anh ơi
+      - chị ơi
+      - cháu ơi
+      - hello 
+      - chào 
+      - hi 
+      - có ai ở đây không?
 
   - intent: goodbye
     examples: |
       - good afternoon
-      - cu
       - good by
       - cee you later
       - good night
@@ -136,3 +306,80 @@ nlu:
       - are you a human?
       - am I talking to a bot?
       - am I talking to a human?
+
+  - intent: khong_dat_duoc_sach
+    examples: |
+      - không đặt sách được
+
+  - intent: tai_sach_bi_loi
+    examples: |
+      - Tải sách bị lỗi
+
+  - intent: may_macbook_tai_duoc_khong
+    examples: |
+      - Máy Macbook tải được không
+
+  - intent: dien_thoai_tai_duoc_khong
+    examples: |
+      - Điện thoại tải được không
+      - dien thoai tai khong duoc
+
+  - intent: dang_ky_lai
+    examples: |
+      - Đã đăng ký rồi nhưng vẫn bắt nhập lại thông tin đăng ký
+
+  - intent: tai_khoan_bi_khoa
+    examples: |
+      - Tài khoản bị khóa
+
+  - intent: quen_mat_khau
+    examples: |
+      - Quên mật khẩu
+
+  - intent: da_tai_sach
+    examples: |
+      - Đã tải sách về rồi, muốn đăng nhập tải lại trên máy tính khác được không
+
+  - intent: khong_tai_duoc_adobe
+    examples: |
+      - Không tải được Adobe
+
+  - intent: su_dung_email
+    examples: |
+      - Sử dụng email cá nhân để đăng ký được không
+
+  - intent: ma_zip_code
+    examples: |
+      - Mã zip code 
+
+  - intent: verifivation_code
+    examples: |
+      - Không nhận được verification code
+
+  - intent: da_tai_duoc_sach
+    examples: |
+      - Đã tải được sách nhưng không đọc (không mở) được
+
+  - intent: thieu_sach
+    examples: |
+      - Thiếu sách
+
+  - intent: khong_co_sach
+    examples: |
+      - Không có sách
+
+  - intent: bi_vang_ra
+    examples: |
+      - Bấm vào chỗ click here thì bị lỗi (bị văng ra)
+
+  - intent: su_dung_trinh_duyet_nao
+    examples: |
+      - Sử dụng trình duyệt nào
+
+  - intent: khong_tai_duoc_sach_khi_ra_truong
+    examples: |
+      - Ra trường rồi có tải sách được không
+
+  - intent: sach_tai_duoc_bao_nhieu_lan
+    examples: |
+      - Sách tải được bao nhiêu lần

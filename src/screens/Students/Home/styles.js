@@ -11,23 +11,25 @@ export default StyleSheet.create({
   },
   ViewTitle: {
     flexDirection: 'row',
-    marginLeft: size.REAL_SIZE_16,
-    marginTop: size.REAL_SIZE_50,
+    paddingHorizontal: size.REAL_SIZE_16,
+    paddingVertical: size.REAL_SIZE_8,
+    backgroundColor:colors.BLUE_MAIN
   },
   ViewTxtTitle: {
     marginLeft: size.REAL_SIZE_12,
     justifyContent: 'center',
+
   },
   TxtHello: {
-    fontSize: size.REAL_SIZE_18,
-    color: colors.LIGHT_PLACEHOLDER,
-    lineHeight: size.REAL_SIZE_24,
+    fontSize: size.REAL_SIZE_12,
+    color: colors.WHITE,
+    lineHeight: size.REAL_SIZE_20,
   },
   TxtNameUser: {
-    fontSize: size.REAL_SIZE_20,
-    color: colors.TEXT_COLOR,
+    fontSize: size.REAL_SIZE_14,
+    color: colors.WHITE,
     fontWeight: '800',
-    lineHeight: size.REAL_SIZE_32,
+    lineHeight: size.REAL_SIZE_20,
   },
   titleApp: {
     alignSelf: 'center',

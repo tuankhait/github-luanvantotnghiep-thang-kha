@@ -23,6 +23,7 @@ function Header(props) {
     headerType2 = false,
     buttonLeft,
     buttonRight,
+    styleContain
   } = props;
   const [disabled, setDisabled] = useState(false);
 
@@ -45,8 +46,8 @@ function Header(props) {
   }
 
   return (
-    <SafeAreaView>
-      <View style={styles.header}>
+    <View>
+      <View style={[styles.header, styleContain]}>
         <View style={[styles.leftH, {flex: headerType2 ? 1 : 1}]}>
           {buttonLeft ? (
             <View>{buttonLeft}</View>
@@ -56,7 +57,7 @@ function Header(props) {
               hitSlop={{top: 10, left: 10, right: 10, bottom: 10}}
               onPress={() => handleNavigationGoBack()}
               style={styles.buttonBack}>
-              <Icon1 name="chevron-back" size={30} color="white" />
+              <Icon1 name="chevron-back" size={30} color="blue" />
               {/* <IconBack fill='#fff' width='16' height='16' /> */}
             </TouchableOpacity>
           ) : null}
@@ -67,18 +68,18 @@ function Header(props) {
             styleBody,
             {flex: headerType2 ? 6 : 8},
           ]}>
-          <Text style={styles.txtHeader}>{textHeader}</Text>
+          <Text style={styles.txtHeader}>{textHeader.toUpperCase()}</Text>
         </View>
         <View style={[{flex: 1, padding: 5}, {flex: headerType2 ? 3 : 1}]}>
           {buttonRight ? buttonRight : <View />}
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
 Header.defaultProps = {
-  backBtnEnable: true,
+  backBtnEnable: false,
   textHeader: '',
   styleBody: null,
   headerType2: false,
@@ -93,6 +94,7 @@ Header.propTypes = {
   headerType2: PropTypes.bool,
   buttonLeft: PropTypes.any,
   buttonRight: PropTypes.any,
+  styleContain:PropTypes.any
 };
 
 const HeaderShowNavigation = withNavigation(Header);

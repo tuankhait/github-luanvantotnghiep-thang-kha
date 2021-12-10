@@ -14,6 +14,9 @@ import Sizes, {WIDTH} from '../../../shared/themes/size';
 import COLORS from '../../../shared/themes/colors';
 import LoadingIndicator from '../../../components/Loading';
 import {useDispatch, useSelector} from 'react-redux';
+import TopTabNavigation from '../../../navigations/TopTabNavigation';
+import colors from '../../../shared/themes/colors';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 const HomeScreenStudent = ({navigation, route}) => {
   const [isShowLoading, setIsShowLoading] = useState(false);
   const authReducer = useSelector(state => state.authReducer);
@@ -85,7 +88,54 @@ const HomeScreenStudent = ({navigation, route}) => {
         />
       ) : null}
       <LoadingIndicator visible={isShowLoading} />
-      <ImageBackground
+      <View style={styles.ViewTitle}>
+        {/* <Image
+          source={require('../../../images/ImageAvatar.png')}
+          style={{
+            height: Sizes.REAL_SIZE_40,
+            width: Sizes.REAL_SIZE_40,
+            borderRadius: Sizes.REAL_SIZE_8,
+            borderWidth: 0.25,
+          }}
+        /> */}
+        <FontAwesome
+          name="user-circle-o"
+          color={colors.WHITE}
+          size={Sizes.REAL_SIZE_40}
+
+        />
+        <View style={styles.ViewTxtTitle}>
+          <Text style={styles.TxtHello}>Xin chào!</Text>
+          <Text style={styles.TxtNameUser}>
+            {authReducer?.userInfo?.SV_HOTEN
+              ? authReducer?.userInfo?.SV_HOTEN
+              : 'Sinh Viên'}
+          </Text>
+        </View>
+      </View>
+      <View style={{flex:1}}>
+        <TopTabNavigation />
+      </View>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('ChatBot');
+        }}
+        style={{
+          position:'absolute',
+          height: 80,
+          width: 80,
+          borderRadius: 40,
+          bottom: 100,
+          left: WIDTH - 100,
+        }}>
+        <Image
+          source={{
+            uri: 'https://cdn.dribbble.com/users/281679/screenshots/14897126/media/f52c47307ac2daa0c727b1840c41d5ab.png',
+          }}
+          style={{ height: 80, width: 80, borderRadius: 40 }}
+        />
+      </TouchableOpacity>
+      {/* <ImageBackground
         source={require('../../../images/ImageLogin.png')}
         style={{height: Sizes.HEIGHT, width: Sizes.WIDTH}}>
         <View style={styles.ViewTitle}>
@@ -133,7 +183,7 @@ const HomeScreenStudent = ({navigation, route}) => {
             style={{height: 80, width: 80, borderRadius: 40}}
           />
         </TouchableOpacity>
-      </ImageBackground>
+      </ImageBackground> */}
     </View>
   );
 };

@@ -28,9 +28,10 @@ const SplashScreen = ({navigation}) => {
             styles.title,
             {
               color: 'black',
+              alignSelf:'center'
             },
           ]}>
-          Wellcome to attendance app CUSC
+          WELCOME TO APTECH INTERNATIONAL PROGRAMMER TRAINING CENTER!
         </Text>
       </View>
       <View style={styles.footer}>

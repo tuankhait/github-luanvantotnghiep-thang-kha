@@ -14,233 +14,117 @@ import {
 import styles from './styles';
 import size, { WIDTH, HEIGHT } from '../../../../shared/themes/size';
 import colors from '../../../../shared/themes/colors';
-import LoadingIndicator from '../../../../components/Loading';
-import Header from '../../../../components/Header';
+import HeaderBase from '../../../../components/HeaderBase';
 import { useDispatch, useSelector } from 'react-redux';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import authActions from '../../../../core/redux/actions/authActions';
-import { CommonActions } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
-import DataApi from '../../../../services/api-service/DataApi';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 const ChangeUserInfo = ({ navigation, route }) => {
-  const resetAction = CommonActions.reset({
-    index: 0,
-    routes: [{ name: 'Login' }],
-  });
-  const [data, setData] = React.useState({
-    password: '',
-    newPassword: '',
-    reNewPassword: '',
-    isValidPassword: true,
-    isValidNewPassword: true,
-    isValidRePassword: true,
-  });
-  const [isShowLoading, setIsShowLoading] = useState(false);
   const dispatch = useDispatch();
   const authReducer = useSelector(state => state.authReducer);
-useEffect(() => {
-  console.log(authReducer)
-}, [])
-  const handlePasswordChange = (value, index) => {
-    switch (index) {
-      case 1:
-        setData({ ...data, password: value });
-        break;
-      case 2:
-        setData({ ...data, newPassword: value });
-        break;
-      case 3:
-        setData({ ...data, reNewPassword: value });
-        break;
-      default:
-        break;
-    }
-  };
-
-  const updateSecureTextEntry = value => {
-    switch (value) {
-      case 1:
-        setData({ ...data, isValidPassword: !data?.isValidPassword });
-        break;
-      case 2:
-        setData({ ...data, isValidNewPassword: !data?.isValidNewPassword });
-        break;
-      case 3:
-        setData({ ...data, isValidRePassword: !data?.isValidRePassword });
-        break;
-      default:
-        break;
-    }
-  };
-
-  const handleUpdatePass = async () => {
-    console.log(data, authReducer)
-    if (data.password == authReducer?.password) {
-      if (data.newPassword == data?.reNewPassword && data.newPassword) {
-        const resUpdatePass = await DataApi.postDataMaster(
-          {
-            id: '63',
-            password: data.newPassword,
-          },
-          { function: 'doiMatKhauUser' },
-        );
-        const message = "Thay doi mat khau thanh cong";
-        if (resUpdatePass?.data == message && resUpdatePass?.msg == "OK") {
-          Alert.alert('Thay đổi mật khẩu thành công');
-          await dispatch(authActions.changePass(data?.newPassword))
-          setData({
-            password: '',
-            newPassword: '',
-            reNewPassword: '',
-            isValidPassword: true,
-            isValidNewPassword: true,
-            isValidRePassword: true,
-          });
+  const [data, setData] = React.useState({
+    KHOA_TEN: authReducer?.userInfo?.KHOA_TEN,
+    LOP_TEN: authReducer?.userInfo?.LOP_TEN,
+    SV_HOTEN: authReducer?.userInfo?.SV_HOTEN,
+    SV_MSSV: authReducer?.userInfo?.SV_MSSV,
+    SV_PORTALID: authReducer?.userInfo?.SV_PORTALID,
+  });
+  const [isShowLoading, setIsShowLoading] = useState(false);
 
 
-        }
-        console.log(resUpdatePass);
-      } else Alert.alert('Mật khẩu mới không trùng khớp, để trống và không phải lớn hơn 6 ký tự');
-    } else Alert.alert('Mật khẩu không đúng');
-  };
-  return ( 
+  return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
-      <Header backBtnEnable={true} textHeader="Cập nhật thông tin" />
+      <HeaderBase backBtnEnable={true} textHeader="Thông tin sinh viên" />
       <ScrollView style={styles.body} showsVerticalScrollIndicator={false}>
-        <View style={styles.viewContainerInstruct}>
-        </View>
+        <View style={styles.viewContainerInstruct}></View>
         <Text style={[styles.TxtCodeSV, { marginTop: size.REAL_SIZE_12 }]}>
-          MẬT KHẨU HIỆN TẠI
+          HỌ VÀ TÊN
         </Text>
-        <View style={[styles.ViewInput]}>
-          <Icon
-            name="md-lock-closed"
+        <View style={[styles.ViewInput]} pointerEvents={'none'}>
+          <FontAwesome
+            name="user"
             color={colors.BLUE_MAIN}
             size={size.REAL_SIZE_20}
           />
           <TextInput
             placeholder="Mật khẩu..."
             placeholderTextColor={colors.BLUE_MAIN}
-            style={{
-              paddingHorizontal: size.REAL_SIZE_10,
-              marginRight: size.REAL_SIZE_10,
-              width: WIDTH - size.REM * 100,
-            }}
+            style={styles.viewInputName}
             secureTextEntry={data.isValidPassword ? true : false}
             autoCapitalize="none"
-            onChangeText={val => handlePasswordChange(val, 1)}
-            defaultValue={data.password}
+            // onChangeText={val => handlePasswordChange(val, 1)}
+            defaultValue={data.SV_HOTEN}
           />
-          <TouchableOpacity
-            onPress={() => updateSecureTextEntry(1)}
-            style={{ justifyContent: 'flex-end' }}>
-            {data.isValidPassword ? (
-              <Feather
-                name="eye-off"
-                color={colors.BLUE_MAIN}
-                size={size.REAL_SIZE_20}
-              />
-            ) : (
-              <Feather
-                name="eye"
-                color={colors.BLUE_MAIN}
-                size={size.REAL_SIZE_20}
-              />
-            )}
-          </TouchableOpacity>
         </View>
         <Text style={[styles.TxtCodeSV, { marginTop: size.REAL_SIZE_12 }]}>
-          NHẬP MẬT KHẨU MỚI
+          MÃ SINH VIÊN
         </Text>
-        <View style={[styles.ViewInput]}>
-          <Icon
-            name="md-lock-closed"
+        <View style={[styles.ViewInput]} pointerEvents={'none'}>
+          <AntDesign
+            name="idcard"
             color={colors.BLUE_MAIN}
             size={size.REAL_SIZE_20}
           />
           <TextInput
-            placeholder="Mật khẩu mới..."
+            placeholder="Mật khẩu..."
             placeholderTextColor={colors.BLUE_MAIN}
-            style={{
-              paddingHorizontal: size.REAL_SIZE_10,
-              marginRight: size.REAL_SIZE_10,
-              width: WIDTH - size.REM * 100,
-            }}
-            secureTextEntry={data.isValidNewPassword ? true : false}
+            style={styles.viewInputName}
+            secureTextEntry={data.isValidPassword ? true : false}
             autoCapitalize="none"
-            onChangeText={val => handlePasswordChange(val, 2)}
-            defaultValue={data.newPassword}
+            // onChangeText={val => handlePasswordChange(val, 1)}
+            defaultValue={data.SV_MSSV}
           />
-          <TouchableOpacity
-            onPress={() => updateSecureTextEntry(2)}
-            style={{ justifyContent: 'flex-end' }}>
-            {data.isValidNewPassword ? (
-              <Feather
-                name="eye-off"
-                color={colors.BLUE_MAIN}
-                size={size.REAL_SIZE_20}
-              />
-            ) : (
-              <Feather
-                name="eye"
-                color={colors.BLUE_MAIN}
-                size={size.REAL_SIZE_20}
-              />
-            )}
-          </TouchableOpacity>
         </View>
         <Text style={[styles.TxtCodeSV, { marginTop: size.REAL_SIZE_12 }]}>
-          NHẬP LẠI MẬT KHẨU MỚI
+          LỚP
         </Text>
-        <View style={[styles.ViewInput]}>
-          <Icon
-            name="md-lock-closed"
+        <View style={[styles.ViewInput]} pointerEvents={'none'}>
+          <MaterialCommunityIcons
+            name="google-classroom"
             color={colors.BLUE_MAIN}
             size={size.REAL_SIZE_20}
           />
           <TextInput
-            placeholder="Nhập lại mật khẩu..."
+            placeholder="Mật khẩu..."
             placeholderTextColor={colors.BLUE_MAIN}
-            style={{
-              paddingHorizontal: size.REAL_SIZE_10,
-              marginRight: size.REAL_SIZE_10,
-              width: WIDTH - size.REM * 100,
-            }}
-            secureTextEntry={data.isValidRePassword ? true : false}
+            style={styles.viewInputName}
+            secureTextEntry={data.isValidPassword ? true : false}
             autoCapitalize="none"
-            onChangeText={val => handlePasswordChange(val, 3)}
-            defaultValue={data.reNewPassword}
+            // onChangeText={val => handlePasswordChange(val, 1)}
+            defaultValue={data.LOP_TEN}
           />
-          <TouchableOpacity
-            onPress={() => updateSecureTextEntry(3)}
-            style={{ justifyContent: 'flex-end' }}>
-            {data.isValidRePassword ? (
-              <Feather
-                name="eye-off"
-                color={colors.BLUE_MAIN}
-                size={size.REAL_SIZE_20}
-              />
-            ) : (
-              <Feather
-                name="eye"
-                color={colors.BLUE_MAIN}
-                size={size.REAL_SIZE_20}
-              />
-            )}
-          </TouchableOpacity>
+        </View>
+        <Text style={[styles.TxtCodeSV, { marginTop: size.REAL_SIZE_12 }]}>
+          KHOA
+        </Text>
+        <View style={[styles.ViewInput]} pointerEvents={'none'}>
+          <MaterialIcons
+            name="class"
+            color={colors.BLUE_MAIN}
+            size={size.REAL_SIZE_20}
+          />
+          <TextInput
+            placeholder="Mật khẩu..."
+            placeholderTextColor={colors.BLUE_MAIN}
+            style={styles.viewInputName}
+            secureTextEntry={data.isValidPassword ? true : false}
+            autoCapitalize="none"
+            // onChangeText={val => handlePasswordChange(val, 1)}
+            defaultValue={data.KHOA_TEN}
+          />
         </View>
       </ScrollView>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={() => handleUpdatePass()}
         style={styles.buttonLogout}>
-        <Text style={[styles.txtUserInfo, { color: 'white' }]}>CẬP NHẬT</Text>
-      </TouchableOpacity>
+        <Text style={[styles.txtUserInfo, {color: 'white'}]}>CẬP NHẬT</Text>
+      </TouchableOpacity> */}
     </KeyboardAvoidingView>
   );
 };
-
 
 export default ChangeUserInfo;

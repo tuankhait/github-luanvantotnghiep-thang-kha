@@ -34,7 +34,7 @@ class kqdau(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         MSV = tracker.get_slot('MSV')
-        url1 = "http://192.168.1.46/hotroxettn/api_server.php?function=getMonHocCuaSinhVienByMSSV"
+        url1 = "http://192.168.49.110/hotro/hotroxettn/api_server.php?function=getMonHocCuaSinhVienByMSSV"
         r = requests.post(url1, json={"mssv": MSV})
         Data = r.json()
         name = '------------------------'
@@ -48,7 +48,7 @@ class kqdau(Action):
             TEN = b['MH_TEN']
             if TEN is None:
                 TEN = "null"
-            urlGetApi = "http://192.168.1.46/hotroxettn/api_server.php?function=getDataTotNghiepCuaSinhVienTheoMon"
+            urlGetApi = "http://192.168.49.110/hotro/hotroxettn/api_server.php?function=getDataTotNghiepCuaSinhVienTheoMon"
             res = requests.post(urlGetApi, json={'mssv': MSV,
                                                  'idMon': b['MH_ID'],
                                                  'checkbox': '1', })
@@ -89,7 +89,7 @@ class kqrot(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         MSV = tracker.get_slot('MSV')
-        url1 = "http://192.168.1.46/hotroxettn/api_server.php?function=getMonHocCuaSinhVienByMSSV"
+        url1 = "http://192.168.49.110/hotro/hotroxettn/api_server.php?function=getMonHocCuaSinhVienByMSSV"
         r = requests.post(url1, json={"mssv": MSV})
         name = '------------------------'
         Data = r.json()
@@ -102,7 +102,7 @@ class kqrot(Action):
             TEN = b['MH_TEN']
             if TEN is None:
                 TEN = "null"
-            urlGetApi = "http://192.168.1.46/hotroxettn/api_server.php?function=getDataTotNghiepCuaSinhVienTheoMon"
+            urlGetApi = "http://192.168.49.110/hotro/hotroxettn/api_server.php?function=getDataTotNghiepCuaSinhVienTheoMon"
             res = requests.post(urlGetApi, json={'mssv': MSV,
                                                  'idMon': b['MH_ID'],
                                                  'checkbox': '0', })
@@ -131,4 +131,3 @@ class kqrot(Action):
         dispatcher.utter_message(text=name)
 
         return []
-

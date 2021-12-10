@@ -15,7 +15,7 @@ import styles from './styles';
 import size, {WIDTH, HEIGHT} from '../../../../shared/themes/size';
 import colors from '../../../../shared/themes/colors';
 import LoadingIndicator from '../../../../components/Loading';
-import Header from '../../../../components/Header';
+import HeaderBase from '../../../../components/HeaderBase';
 import {useDispatch, useSelector} from 'react-redux';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import authActions from '../../../../core/redux/actions/authActions';
@@ -73,7 +73,7 @@ const ChangePassword = ({navigation, route}) => {
   };
 
   const handleUpdatePass = async () => {
-    console.log(data, authReducer)
+
     if (data.password == authReducer?.password) {
       if (data.newPassword == data?.reNewPassword && data.newPassword) {
         const resUpdatePass = await DataApi.postDataMaster(
@@ -98,7 +98,6 @@ const ChangePassword = ({navigation, route}) => {
 
 
         }
-        console.log(resUpdatePass);
       } else Alert.alert('Mật khẩu mới không trùng khớp, để trống và không phải lớn hơn 6 ký tự');
     } else Alert.alert('Mật khẩu không đúng');
   };
@@ -108,7 +107,7 @@ const ChangePassword = ({navigation, route}) => {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
-      <Header backBtnEnable={true} textHeader="Cập nhật mật khẩu" />
+      <HeaderBase backBtnEnable={true} textHeader="Cập nhật mật khẩu" />
       <ScrollView style={styles.body} showsVerticalScrollIndicator={false}>
         <View style={styles.viewContainerInstruct}>
           <Text style={styles.txtInstruct}>{instruct}</Text>

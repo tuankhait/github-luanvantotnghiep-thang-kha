@@ -6,7 +6,7 @@ import HomeScreenStudent from '../screens/Students/Home';
 import FaildSubject from '../screens/Students/FaildSubject';
 import PassingSubject from '../screens/Students/PassingSubject';
 import ProfileStudent from '../screens/Students/ProfileStudent';
-import TuitionFee from '../screens/Students/TuitionFee';
+import TotalSubject from '../screens/Students/TotalSubject';
 import ChatBoxScreen from '../screens/Students/ChatBot';
 import {NavigationContainer} from '@react-navigation/native';
 import navigationService from '../services/navigation-service/';
@@ -31,7 +31,7 @@ const HomeStackNavigator = () => {
         <Stack.Screen name="FaildSubject" component={FaildSubject} />
         <Stack.Screen name="PassingSubject" component={PassingSubject} />
         <Stack.Screen name="ProfileStudent" component={ProfileStudent} />
-        <Stack.Screen name="TuitionFee" component={TuitionFee} />
+        <Stack.Screen name="TotalSubject" component={TotalSubject} />
         <Stack.Screen name="ChatBot" component={ChatBoxScreen} />
         <Stack.Screen name="ChangePassword" component={ChangePassword} />
         <Stack.Screen name="ChangeUserInfo" component={ChangeUserInfo} />

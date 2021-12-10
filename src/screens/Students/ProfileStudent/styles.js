@@ -23,6 +23,7 @@ export default StyleSheet.create({
     marginHorizontal: size.REAL_SIZE_14,
   },
   imageAvatar: {
+    zIndex:2,
     height: size.REAL_SIZE_96,
     width: size.REAL_SIZE_96,
     borderRadius: size.REAL_SIZE_96,

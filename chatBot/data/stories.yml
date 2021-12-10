@@ -1,15 +1,17 @@
 version: '2.0'
 
 stories:
+  - story: modau
+    steps:
+      - intent: rep_MSV
+        entities:
+          - MSV: 'B16045'
+
   - story: xemdiemdau
     steps:
       - intent: btn
       - action: utter_btn
       - intent: xemdiemdau
-      - action: utter_ask_MSV
-      - intent: rep_MSV
-        entities:
-          - MSV: 'B16045'
       - action: kqdau
       - action: utter_ask_btn
       - intent: xemdiemchuadau
@@ -20,10 +22,6 @@ stories:
       - intent: btn
       - action: utter_btn
       - intent: xemdiemdau
-      - action: utter_ask_MSV
-      - intent: rep_MSV
-        entities:
-          - MSV: 'B16045'
       - action: kqdau
       - action: utter_ask_btn
       - intent: xemdiemchuadau
@@ -34,10 +32,6 @@ stories:
       - intent: btn
       - action: utter_btn
       - intent: xemdiemchuadau
-      - action: utter_ask_MSV
-      - intent: rep_MSV
-        entities:
-          - MSV: 'B16045'
       - action: kqrot
       - action: utter_ask_btn
       - intent: xemdiemdau
@@ -48,10 +42,6 @@ stories:
       - intent: btn
       - action: utter_btn
       - intent: xemdiemchuadau
-      - action: utter_ask_MSV
-      - intent: rep_MSV
-        entities:
-          - MSV: 'B16045'
       - action: kqrot
       - action: utter_ask_btn
       - intent: xemdiemdau
@@ -60,10 +50,6 @@ stories:
   - story: btn7
     steps:
       - intent: xemdiemchuadau
-      - action: utter_ask_MSV
-      - intent: rep_MSV
-        entities:
-          - MSV: 'B16045'
       - action: kqrot
       - action: utter_ask_btn
       - intent: xemdiemdau
@@ -72,10 +58,6 @@ stories:
   - story: btn8
     steps:
       - intent: xemdiemdau
-      - action: utter_ask_MSV
-      - intent: rep_MSV
-        entities:
-          - MSV: 'B16045'
       - action: kqdau
       - action: utter_ask_btn
       - intent: xemdiemchuadau
@@ -107,3 +89,98 @@ stories:
       - action: utter_did_that_help
       - intent: deny
       - action: utter_goodbye
+
+  - story: note1
+    steps:
+      - intent: khong_dat_duoc_sach
+      - action: utter_FailPass
+
+  - story: note2
+    steps:
+      - intent: tai_sach_bi_loi
+      - action: utter_FailPass
+
+  - story: note3
+    steps:
+      - intent: may_macbook_tai_duoc_khong
+      - action: utter_PHONE
+
+  - story: note5
+    steps:
+      - intent: dang_ky_lai
+      - action: utter_Register
+
+  - story: note6
+    steps:
+      - intent: tai_khoan_bi_khoa
+      - action: utter_LockUser
+
+  - story: note7
+    steps:
+      - intent: quen_mat_khau
+      - action: utter_LockUser
+
+  - story: note8
+    steps:
+      - intent: da_tai_sach
+      - action: utter_Adobe
+
+  - story: note9
+    steps:
+      - intent: khong_tai_duoc_adobe
+      - action: utter_FireFoxAbode
+
+  - story: note10
+    steps:
+      - intent: su_dung_email
+      - action: utter_Email
+
+  - story: note11
+    steps:
+      - intent: ma_zip_code
+      - action: utter_900000
+
+  - story: note12
+    steps:
+      - intent: da_tai_duoc_sach
+      - action: utter_LockUser
+
+  - story: note13
+    steps:
+      - intent: verifivation_code
+      - action: utter_LockUser
+
+  - story: note14
+    steps:
+      - intent: da_tai_duoc_sach
+      - action: utter_LockUser
+
+  - story: note15
+    steps:
+      - intent: thieu_sach
+      - action: utter_LockUser
+
+  - story: note16
+    steps:
+      - intent: khong_co_sach
+      - action: utter_LockUser
+
+  - story: note17
+    steps:
+      - intent: su_dung_trinh_duyet_nao
+      - action: utter_FireFox
+
+  - story: note18
+    steps:
+      - intent: bi_vang_ra
+      - action: utter_CheckFireFox
+
+  - story: note19
+    steps:
+      - intent: khong_tai_duoc_sach_khi_ra_truong
+      - action: utter_EndStudy
+
+  - story: note120
+    steps:
+      - intent: sach_tai_duoc_bao_nhieu_lan
+      - action: utter_Varsity

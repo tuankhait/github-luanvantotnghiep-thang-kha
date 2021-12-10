@@ -50,7 +50,6 @@ const FaildSubject = ({navigation, route}) => {
   }, []);
   //render Item home
   function renderItems({item, index}) {
-    console.log('item', item);
     return (
       <View key={item.id} style={[styles.btnFunction]}>
         <View style={styles.ViewDes}>
@@ -87,7 +86,7 @@ const FaildSubject = ({navigation, route}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header backBtnEnable={true} textHeader="Thông tin điểm chưa đậu" />
+      <Header textHeader="Thông tin điểm chưa đậu" />
       <LoadingIndicator visible={isShowLoading} />
       {data.length != 0 ? (
         <FlatList

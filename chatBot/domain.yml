@@ -12,6 +12,25 @@ intents:
   - xemdiemchuadau
   - btn
   - rep_MSV
+  - khong_dat_duoc_sach
+  - tai_sach_bi_loi
+  - may_macbook_tai_duoc_khong
+  - dien_thoai_tai_duoc_khong
+  - dang_ky_lai
+  - tai_khoan_bi_khoa
+  - quen_mat_khau
+  - da_tai_sach
+  - khong_tai_duoc_adobe
+  - su_dung_email
+  - ma_zip_code
+  - verifivation_code
+  - da_tai_duoc_sach
+  - thieu_sach
+  - khong_co_sach
+  - bi_vang_ra
+  - su_dung_trinh_duyet_nao
+  - khong_tai_duoc_sach_khi_ra_truong
+  - sach_tai_duoc_bao_nhieu_lan
 
 entities:
   - MSV
@@ -58,6 +77,45 @@ responses:
 
   utter_iamabot:
     - text: 'I am a bot, powered by Rasa.'
+
+  utter_FailPass:
+    - text: 'kiểm tra username và password (chữ cái đầu viết hoa).'
+
+  utter_MAC:
+    - text: 'Có thể sử dụng Macbook Pro và Macbook Air để đăng ký và tải sách'
+
+  utter_PHONE:
+    - text: 'Có thể sử dụng điện thoại để đăng ký và tải sách'
+
+  utter_FireFoxAbode:
+    - text: 'Kiểm tra trình duyệt đang sử dụng. Sử dụng trình duyệt FireFox để tải Adobe'
+
+  utter_Register:
+    - text: 'Đã lặp lại bước 2, sai đường link đăng nhập, vui lòng đọc kỹ hướng dẫn, nếu tiếp tục lặp lại quá nhiều lần sẽ bị khóa tài khoản'
+
+  utter_LockUser:
+    - text: 'Cung cấp email, số điện thoại để được hỗ trợ'
+
+  utter_Adobe:
+    - text: 'Chính sách bảo mật của Online Varsity: mỗi cá nhân có thể đăng nhập và tải sách trên 1 thiết bị di động và 1 laptop (hoặc PC). Muốn đăng nhập trên máy tính khác phải đảm bảo tài khoản đã được đăng xuất ở các laptop/PC khác.'
+
+  utter_Email:
+    - text: 'Sử dụng mail trung tâm đã cung cấp đầu khóa học'
+
+  utter_FireFox:
+    - text: 'Sử dụng trình duyệt FireFox để đăng ký và tải sách'
+
+  utter_CheckFireFox:
+    - text: 'kiểm tra trình duyệt đang sử dụng. Sử dụng trình duyệt FireFox để đăng ký và tải sách'
+
+  utter_EndStudy:
+    - text: 'Sau khi khóa học kết thúc 6 tháng, những ebook đã tải về vẫn mở để xem được, những ebook chưa tải về sẽ không còn trên tài khoản'
+
+  utter_Varsity:
+    - text: 'Online Varsity giới hạn mỗi ebook chỉ được tải về tối đa 6 lần.'
+
+  utter_900000:
+    - text: '900000'
 
 actions:
   - kqdau

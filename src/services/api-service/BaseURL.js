@@ -1,6 +1,6 @@
 
 //địa chỉ ipv4 của máy
-const IpLapTop ="192.168.1.46";
+const IpLapTop ="192.168.49.110";
 export const baseURL = {
-  public: `http://${IpLapTop}/hotroxettn`,
+  public: `http://${IpLapTop}/hotro/hotroxettn`,
 }
