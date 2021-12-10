@@ -46,7 +46,7 @@ const RNRasa = ({
     const response = await fetch(`${host}/webhooks/rest/webhook`, {
       ...fetchOptions,
       body: JSON.stringify({
-        message: `${authReducer?.userInfo?.SV_MSSV}`,
+        message: `ma la ${authReducer?.userInfo?.SV_MSSV}`,
         sender: 'user',
       }),
     });
@@ -161,7 +161,9 @@ const RNRasa = ({
           );
         }}
       />
-      {Platform.OS === 'android' ? <KeyboardSpacer /> : null}
+      {
+                Platform.OS === 'android' && <KeyboardAvoidingView behavior={null}/>
+            }
     </View>
   );
 };
