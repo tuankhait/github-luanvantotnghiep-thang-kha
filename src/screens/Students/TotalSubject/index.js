@@ -34,7 +34,7 @@ const TotalSubject = ({ navigation, route }) => {
   //render Item home
   function renderItems({ item, index }) {
     return (
-      <View key={item.id} style={[styles.btnFunction]}>
+      <View key={index} style={[styles.btnFunction]}>
         <View style={styles.ViewDes}>
           <Text style={styles.txtNameListFunction}>{'Tên Môn:'}</Text>
           <Text style={styles.txtDesListFunction}>

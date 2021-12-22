@@ -17,15 +17,16 @@ const TopTabNavigation=()=> {
             tabBar={props => <TabBarApp {...props}  />}
         >
             <Tab.Screen
-                name={"TotalSubjectStack"}
-                component={TotalSubjectStack}
+                name={"ProfileStudentStack"}
+                component={ProfileStudentStack}
                 options={{
                     headerShown: false,
-                    tabBarIcon: "library",
-                    tabBarIconfocus: "library",
-                    title: "Môn học",
+                    tabBarIcon: "person",
+                    tabBarIconfocus: "person",
+                    title: "Thông tin cá nhân",
                 }}
             />
+          
             <Tab.Screen
                 name={"PassingSubjectTab"}
                 component={PassingSubjectStack}
@@ -47,15 +48,16 @@ const TopTabNavigation=()=> {
                 }}
             />
             <Tab.Screen
-                name={"ProfileStudentStack"}
-                component={ProfileStudentStack}
+                name={"TotalSubjectStack"}
+                component={TotalSubjectStack}
                 options={{
                     headerShown: false,
-                    tabBarIcon: "person",
-                    tabBarIconfocus: "person",
-                    title: "Thông tin cá nhân",
+                    tabBarIcon: "library",
+                    tabBarIconfocus: "library",
+                    title: "Môn học",
                 }}
             />
+
         </Tab.Navigator >
         // </View>
     );

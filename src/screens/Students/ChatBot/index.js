@@ -14,7 +14,7 @@ import RNRasa from './RNRasa';
 
 
 // your host
-const IpLaptop ="192.168.49.110";
+const IpLaptop ="192.168.1.38";
 const HOST = `http://${IpLaptop}:5005`;
 
 //TODO: reset bot on destroy

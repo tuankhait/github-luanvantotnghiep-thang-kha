@@ -34,12 +34,13 @@ const PassingSubject = ({ navigation, route }) => {
               },
               { function: 'getDataTotNghiepCuaSinhVienTheoMon' },
             );
+            
             if (res?.msg == 'OK') {
               var array = arraySubjectPass.concat(res?.data);
               arraySubjectPass = array;
-              if (index == resSubject?.data.length - 1) {
-                setData(arraySubjectPass);
-              }
+            }
+            if (index == resSubject?.data.length - 1) {
+              setData(arraySubjectPass);
             }
           });
         }
@@ -51,7 +52,7 @@ const PassingSubject = ({ navigation, route }) => {
   //render Item home
   function renderItems({ item, index }) {
     return (
-      <View key={item.id} style={[styles.btnFunction]}>
+      <View key={index} style={[styles.btnFunction]}>
         <View style={styles.ViewDes}>
           <Text style={styles.txtNameListFunction}>{'Tên môn:'}</Text>
           <Text style={styles.txtDesListFunction}>

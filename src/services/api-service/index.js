@@ -9,7 +9,6 @@ const addParams = (url, params) => {
   _.keys(params).forEach(value => {
     url += `${value}=${params[value]}`;
   });
-  console.log("url", url);
   return url;
 };
 

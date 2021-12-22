@@ -42,11 +42,11 @@ nlu:
 
   - intent: rep_MSV
     examples: |
-      - ma la [B12345]{"entity":"MSV"}
+      - ma la [A16075]{"entity":"MSV"}
       - ma [B12345]{"entity":"MSV"}
-      - mã la [B12345]{"entity":"MSV"}
-      - [B12345]{"entity":"MSV"}
-      - mã e là [B12345]{"entity":"MSV"}
+      - mã la [C12345]{"entity":"MSV"}
+      - [A12345]{"entity":"MSV"}
+      - mã e là [A12345]{"entity":"MSV"}
       - mã mình là [B12345]{"entity":"MSV"}
 
   - intent: xemdiemdau
@@ -307,79 +307,35 @@ nlu:
       - am I talking to a bot?
       - am I talking to a human?
 
-  - intent: khong_dat_duoc_sach
-    examples: |
-      - không đặt sách được
-
-  - intent: tai_sach_bi_loi
-    examples: |
-      - Tải sách bị lỗi
-
-  - intent: may_macbook_tai_duoc_khong
-    examples: |
-      - Máy Macbook tải được không
-
-  - intent: dien_thoai_tai_duoc_khong
-    examples: |
-      - Điện thoại tải được không
-      - dien thoai tai khong duoc
-
-  - intent: dang_ky_lai
-    examples: |
-      - Đã đăng ký rồi nhưng vẫn bắt nhập lại thông tin đăng ký
-
-  - intent: tai_khoan_bi_khoa
-    examples: |
-      - Tài khoản bị khóa
-
-  - intent: quen_mat_khau
-    examples: |
-      - Quên mật khẩu
-
-  - intent: da_tai_sach
-    examples: |
-      - Đã tải sách về rồi, muốn đăng nhập tải lại trên máy tính khác được không
-
-  - intent: khong_tai_duoc_adobe
-    examples: |
-      - Không tải được Adobe
-
-  - intent: su_dung_email
-    examples: |
-      - Sử dụng email cá nhân để đăng ký được không
-
-  - intent: ma_zip_code
-    examples: |
-      - Mã zip code 
-
-  - intent: verifivation_code
-    examples: |
-      - Không nhận được verification code
-
-  - intent: da_tai_duoc_sach
-    examples: |
-      - Đã tải được sách nhưng không đọc (không mở) được
-
-  - intent: thieu_sach
+  - intent: thieusach
     examples: |
       - Thiếu sách
+      - thieu sach
+      - sach thieu
+      - khong du sach
 
-  - intent: khong_co_sach
+  - intent: khongcosach
     examples: |
       - Không có sách
+      - khong co sach
+      - khong có sách
+      - sach khong co
 
-  - intent: bi_vang_ra
+  - intent: dienthoaicotaisachduockhong
     examples: |
-      - Bấm vào chỗ click here thì bị lỗi (bị văng ra)
-
-  - intent: su_dung_trinh_duyet_nao
+      - điện thoại có thể tải sách được không
+      - tải sách trên điện thoại được không
+      - sách tải trên điện thoại được không
+      - tôi muốn tải sách trên điện thoại có được không
+      - tải sách trên điện thoại có đọc được không
+      - dien thoai khong tai duoc sach
+      
+  - intent: datsachbiloi
     examples: |
-      - Sử dụng trình duyệt nào
-
-  - intent: khong_tai_duoc_sach_khi_ra_truong
-    examples: |
-      - Ra trường rồi có tải sách được không
-
-  - intent: sach_tai_duoc_bao_nhieu_lan
-    examples: |
-      - Sách tải được bao nhiêu lần
+      - tôi không đặt sách được trên OV
+      - không thể đặt sách trên OV
+      - đặt sách trên OV bị lỗi
+      - sách khi đặt bị lỗi trên OV
+      - sách của OV không đặt được
+      - không đặt được sách
+      - khong dat duoc sach

@@ -27,7 +27,7 @@ const RNRasa = ({
   const authReducer = useSelector(state => state.authReducer);
   const [messages, setMessages] = useState([]);
   useEffect(() => {
-    postMSV()
+    postMSV();
     setMessages([
       {
         _id: 1,
@@ -50,6 +50,7 @@ const RNRasa = ({
         sender: 'user',
       }),
     });
+
   }
   // Parse the array message
   const parseMessages = useCallback(
@@ -82,7 +83,6 @@ const RNRasa = ({
           messagesJson = messageFail;
         }
         const newRecivieMess = parseMessages(messagesJson);
-        console.log("newRecivieMess", newRecivieMess);
         if (!newRecivieMess.length) {
           onEmptyResponse && onEmptyResponse();
           if (emptyResponseMessage) {
@@ -114,7 +114,6 @@ const RNRasa = ({
   const onSend = useCallback(mess => {
     sendMessage(mess[0].text);
     setMessages(previousMessages => GiftedChat.append(previousMessages, mess));
-    // console.log("mess[0].text", mess[0].text)
   }, []);
   // Bot Button click
   const onQuickReply = useCallback(

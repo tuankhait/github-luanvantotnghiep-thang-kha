@@ -149,7 +149,6 @@ const Login = ({ navigation }) => {
           },
           { function: 'getInfoSinhVienByMSSV' },
         );
-        console.log("resUserInfo",resUserInfo);
         if (resUserInfo?.msg == "OK" && resUserInfo?.data) {
           dispatch(authActions.loginSuccess({
             username: username,
