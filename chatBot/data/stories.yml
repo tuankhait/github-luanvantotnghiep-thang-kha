@@ -92,3 +92,85 @@ stories:
       - intent: rep_MSV
       - action: utter_Hi
 
+  - story: khong dat duoc sach
+    steps:
+      - intent: khongdatduocsach
+      - action: utter_FailPass
+
+  - story: tai sach bi loi
+    steps:
+      - intent: taisachbiloi
+      - action: utter_FailPass
+
+  - story: may mac book tai duoc khong
+    steps:
+      - intent: maymacbooktaiduockhong
+      - action: utter_MAC
+
+  - story: dang ky lai tai khoan
+    steps:
+      - intent: dangkylai
+      - action: utter_Register
+
+  - story: tai khoan bi khoa roi
+    steps:
+      - intent: taikhoanbikhoa
+      - action: utter_LockUser
+
+  - story: quen mat khau
+    steps:
+      - intent: quenmatkhau
+      - action: utter_LockUser
+
+  - story: da tai sach roi ma
+    steps:
+      - intent: dataisach
+      - action: utter_Online_Varsity
+
+  - story: khong tai duoc adobe nhe
+    steps:
+      - intent: khongtaiduocadobe
+      - action: utter_CheckFireFox     
+
+  - story: su dung email de nhap lai
+    steps:
+      - intent: sudungemail
+      - action: utter_use_email    
+
+  - story: ma zip code 900000
+    steps:
+      - intent: mazipcode
+      - action: utter_900000 
+
+  - story: verifivation code tin nhan
+    steps:
+      - intent: verifivationcode
+      - action: utter_LockUser 
+
+  - story: da tai sach roi
+    steps:
+      - intent: dataiduocsach
+      - action: utter_LockUser 
+
+  - story: bi vang ra khoi
+    steps:
+      - intent: bivangra
+      - action: utter_CheckFireFox 
+
+  - story: su dung trinh duyet nao
+    steps:
+      - intent: sudungtrinhduyetnao
+      - action: utter_FireFox
+
+
+  - story: khong tai duoc sach khi ra truong nha
+    steps:
+      - intent: khongtaiduocsachkhiratruong
+      - action: utter_EndStudy
+
+  - story: sach tai duoc bao nhieu lan
+    steps:
+      - intent: sachtaiduocbaonhieulan
+      - action: utter_Varsity 
+
+

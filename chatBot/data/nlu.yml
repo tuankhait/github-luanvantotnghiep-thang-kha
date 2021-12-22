@@ -321,15 +321,6 @@ nlu:
       - khong có sách
       - sach khong co
 
-  - intent: dienthoaicotaisachduockhong
-    examples: |
-      - điện thoại có thể tải sách được không
-      - tải sách trên điện thoại được không
-      - sách tải trên điện thoại được không
-      - tôi muốn tải sách trên điện thoại có được không
-      - tải sách trên điện thoại có đọc được không
-      - dien thoai khong tai duoc sach
-      
   - intent: datsachbiloi
     examples: |
       - tôi không đặt sách được trên OV
@@ -339,3 +330,130 @@ nlu:
       - sách của OV không đặt được
       - không đặt được sách
       - khong dat duoc sach
+
+  - intent: khongdatduocsach
+    examples: |
+      - không đặt sách được
+      - khong dat duoc sach
+      - sach khong dat duoc
+      - khong dat duoc
+      - khong mua duoc
+      - mua khong duoc sach
+
+  - intent: taisachbiloi
+    examples: |
+      - Tải sách bị lỗi
+      - tai loi sach
+      - Tải lỗi
+      - tai loi
+      - sach tai loi
+
+  - intent: maymacbooktaiduockhong
+    examples: |
+      - Máy Macbook tải được không
+      - may mac tai duoc khong
+      - tai may mac duoc khong
+      - tai may mac
+
+  - intent: dienthoaitaiduockhong
+    examples: |
+      - Điện thoại tải được không
+      - dien thoai tai khong duoc
+      - tai duoc tren dien thoai khong
+      - tai bi loi tren dien thoai
+      - dien thoai tai sach
+
+  - intent: dangkylai
+    examples: |
+      - Đã đăng ký rồi nhưng vẫn bắt nhập lại thông tin đăng ký
+      - dăng ky lai
+      - lay lai thong tin
+
+  - intent: taikhoanbikhoa
+    examples: |
+      - Tài khoản bị khóa
+      - bi khoa tai khoan
+      - tai khoan bi khoa
+      - bi khoa
+      - mo tai khoan bi khoa
+
+  - intent: quenmatkhau
+    examples: |
+      - Quên mật khẩu
+      - quen mat khau
+      - forgot pass
+      - mat mat khau
+      - mat pass
+      
+  - intent: dataisach
+    examples: |
+      - Đã tải sách về rồi, muốn đăng nhập tải lại trên máy tính khác được không
+      - da tai sach ve roi, muon dăng nhap tai lại tren may tinh khac duoc khong
+      - da tai sach ve roi, tai lại duoc khong
+      
+  - intent: khongtaiduocadobe
+    examples: |
+      - Không tải được Adobe
+      - khong tai duoc Adobe
+      - Adobe loi 
+      - tai Adobe loi
+
+
+  - intent: sudungemail
+    examples: |
+      - Sử dụng email cá nhân để đăng ký được không
+      - su dung email duoc khong
+      - su dung email nay duoc khong
+      - email dung duoc khong
+
+  - intent: mazipcode
+    examples: |
+      - Mã zip code
+      - Ma zip code
+      - ma
+      - zip code
+      - code
+      - ma zip
+
+  - intent: verifivationcode
+    examples: |
+      - Không nhận được verification code
+      - khong verifi duoc
+      - khong nhan duoc code
+      - khong co code
+      - code khong gui ve
+    
+  - intent: dataiduocsach
+    examples: |
+      - Đã tải được sách nhưng không đọc (không mở) được
+      - da tai duoc sach nhung khong doc duoc
+      - ko mo sach duoc
+      - tai ve ma khong doc
+
+
+
+  - intent: bivangra
+    examples: |
+      - Bấm vào chỗ click here thì bị lỗi (bị văng ra)
+      - bi vang ra
+      - bi kick
+      - vang ra
+      - loi
+
+  - intent: sudungtrinhduyetnao
+    examples: |
+      - Sử dụng trình duyệt nào
+      - su dung trinh duyet nao
+      - su dung web nao
+
+  - intent: khongtaiduocsachkhiratruong
+    examples: |
+      - Ra trường rồi có tải sách được không
+      - ra truong co tai duoc sach khong
+      - tai sach khi ra truong
+
+  - intent: sachtaiduocbaonhieulan
+    examples: |
+      - Sách tải được bao nhiêu lần
+      - sach tai duoc bao nhieu lan 
+      - bao nhieu lan tai duoc mot cuon sach

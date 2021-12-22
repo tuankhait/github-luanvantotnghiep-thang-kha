@@ -35,7 +35,7 @@ class kqdau(Action):
 
         MSV = tracker.get_slot('MSV')
         url1 = "http://192.168.1.38/hotro/hotroxettn/api_server.php?function=getMonHocCuaSinhVienByMSSV"
-        r = requests.post(url1, json={"mssv": MSV}) #thay cái này bằng giá trị cụ thế MSV
+        r = requests.post(url1, json={"mssv": MSV}) 
         Data = r.json()
         name = '------------------------'
         if not Data['data']:
@@ -49,7 +49,7 @@ class kqdau(Action):
             if TEN is None:
                 TEN = "null"
             urlGetApi = "http://192.168.1.38/hotro/hotroxettn/api_server.php?function=getDataTotNghiepCuaSinhVienTheoMon"
-            res = requests.post(urlGetApi, json={'mssv': MSV,#thay cái này bằng giá trị cụ thế MSV
+            res = requests.post(urlGetApi, json={'mssv': MSV,
                                                  'idMon': b['MH_ID'],
                                                  'checkbox': '1', })
             DataGetPoint = res.json()
@@ -60,7 +60,7 @@ class kqdau(Action):
                 THIDIEM = c['THI_DIEM']
                 if THIDIEM is None:
                     THIDIEM = 'null'
-                elif i < 3:
+                elif i < 6:
                     ngaykt = c['KT_NGAY']
                     ngaykt1 = ngaykt['date']
                     stringDate = datetime.strptime(
@@ -69,7 +69,7 @@ class kqdau(Action):
                     name += "\n" + "Môn: " + c['MH_TEN'] + " (" + c['LOAITHI_TEN'] + ") \n \n" + \
                         "Điểm: " + THIDIEM + "\n \n" + "Ngày: " + \
                             convertDate + " \n------------------------"
-                elif i == 3:
+                elif i == 6:
                     name += "\n" + "Xem chi tiết tại Điểm thi đậu" + " \n------------------------"
         if i == 0:
             name += "\n" + "Chưa có môn nào đậu" + " \n------------------------"
@@ -103,7 +103,7 @@ class kqrot(Action):
             if TEN is None:
                 TEN = "null"
             urlGetApi = "http://192.168.1.38/hotro/hotroxettn/api_server.php?function=getDataTotNghiepCuaSinhVienTheoMon"
-            res = requests.post(urlGetApi, json={'mssv': MSV,#thay cái này bằng giá trị cụ thế MSV
+            res = requests.post(urlGetApi, json={'mssv': MSV,
                                                  'idMon': b['MH_ID'],
                                                  'checkbox': '0', })
             DataGetPoint = res.json()
@@ -114,7 +114,7 @@ class kqrot(Action):
                 THIDIEM = c['THI_DIEM']
                 if THIDIEM is None:
                     THIDIEM = 'null'
-                if i < 3:
+                if i < 6:
                     ngaykt = c['KT_NGAY']
                     ngaykt1 = ngaykt['date']
                     stringDate = datetime.strptime(
@@ -123,7 +123,7 @@ class kqrot(Action):
                     name += "\n" + "Môn: " + c['MH_TEN'] + " (" + c['LOAITHI_TEN'] + ") \n \n" + \
                         "Điểm: " + THIDIEM + "\n \n" + "Ngày: " + \
                             convertDate + " \n------------------------"
-                elif i == 3:
+                elif i == 6:
                     name += "\n" + "Xem chi tiết tại Điểm thi rớt" + " \n------------------------"
         if i == 0:
             name += "\n" + "Chưa có môn nào rớt" + " \n------------------------"

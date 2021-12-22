@@ -16,6 +16,23 @@ intents:
   - dienthoaicotaisachduockhong
   - khongcosach
   - thieusach
+  - khongdatduocsach
+  - taisachbiloi
+  - maymacbooktaiduockhong
+  - dienthoaitaiduockhong
+  - dangkylai
+  - taikhoanbikhoa
+  - quenmatkhau
+  - dataisach
+  - khongtaiduocadobe
+  - sudungemail
+  - mazipcode
+  - verifivationcode
+  - dataiduocsach
+  - bivangra
+  - sudungtrinhduyetnao
+  - khongtaiduocsachkhiratruong
+  - sachtaiduocbaonhieulan
  
 
 entities:
@@ -71,7 +88,7 @@ responses:
     - text: 'Bạn vui lòng kiểm tra lại username và password (chữ cái đầu viết hoa ^_^!)'
 
   utter_dienthoaicotaisachduockhong:
-    - text: 'Bạn có thể sử dụng điện thoại để đăng ký và tải sách luôn đó ^_^!)'
+    - text: 'Bạn có thể sử dụng điện thoại để đăng ký và tải sách luôn đó ^_^!'
 
   utter_FailPass:
     - text: 'kiểm tra username và password (chữ cái đầu viết hoa).'
@@ -108,6 +125,12 @@ responses:
 
   utter_Varsity:
     - text: 'Online Varsity giới hạn mỗi ebook chỉ được tải về tối đa 6 lần.'
+
+  utter_Online_Varsity:
+    - text: 'Chính sách bảo mật của Online Varsity: mỗi cá nhân có thể đăng nhập và tải sách trên 1 thiết bị di động và 1 laptop (hoặc PC). Muốn đăng nhập trên máy tính khác phải đảm bảo tài khoản đã được đăng xuất ở các laptop/PC khác.'
+
+  utter_use_email:
+    - text: 'Sử dụng mail trung tâm đã cung cấp đầu khóa học'
 
   utter_900000:
     - text: '900000'
